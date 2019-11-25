@@ -1,0 +1,94 @@
+% The UCW Macro Collection: Typesetting of algorithms
+% Written by Martin Mares <mj@ucw.cz> in 2018 and placed into public domain
+% -------------------------------------------------------------------------
+
+\ucwdefmodule{algo}
+
+%	\algo{name of the algorithm}\algalias{a longer name}
+%	\algin input description
+%	\:step
+%	\:step  \cmt{comment}
+%	\::[identifier]nested step
+%	\:::yet more nested step
+%	\algout output description
+%	\endalgo
+
+% Localized strings
+\localedef{0}{alg:alg}{Algorithm}
+\localedef{0}{alg:proc}{Procedure}
+\localedef{0}{alg:in}{Input}
+\localedef{0}{alg:out}{Output}
+
+% Item indent
+\newdimen\algoindent
+\algoindent=2em
+
+% Extra indent for nested items
+\newdimen\algonestindent
+\algonestindent=2em
+
+% Width of item label
+\newdimen\algolabelwidth
+\algolabelwidth=0.5em
+
+% Set up spacing (customizable)
+\def\algospacing{
+	\itemnarrow=\itemindent
+	\interitemskip=1pt
+	\preitemizeskip=\bigskipamount
+	\postitemizeskip=\dimexpr \bigskipamount - \parskip \relax
+}
+
+% Set up paragraph mode for a single step of the algorithm (customizable)
+\def\algopar{
+	\par
+	\parindent=\algoindent
+	\hangindent=\algoindent
+	\advance\hangindent by \algolabelwidth
+	\hangafter=1
+	\leavevmode
+}
+
+% Typeset step label (customizable)
+\def\algostep#1{\hbox to \algolabelwidth{\hss #1~~}}
+
+\def\algoinit{
+	\begingroup
+	\algospacing
+	\inititemize
+	\let\:=\algoitem
+	\def\={\leftarrow}
+	\let\cmt=\algcmt
+	\itemcount=0
+}
+
+\def\typedalgo#1#2{\algoinit {\bo #1\/} \alg{#2}}
+\def\algo#1{\typedalgo{\localestr{alg:alg}}{#1}}
+\def\proc#1{\typedalgo{\localestr{alg:proc}}{#1}}
+\def\headlessalgo{\algoinit}
+
+\def\endalgo{\endlist\endgroup}
+\let\endproc=\endalgo
+
+\def\algoitem{%
+	\ifnum\itemcount=0\par\nobreak\smallskip\fi
+	\algopar\advance\itemcount by 1
+	\algostep{\the\itemcount.}%
+	\futurelet\next\algoitemh
+}
+
+\def\algoitemh{\ifx\next:\let\next=\algohang\else\let\next=\algoitemgo\fi\next}
+\def\algohang:{\advance\hangindent by \algonestindent \hskip \algonestindent\futurelet\next\algoitemh}
+\optdef\algoitemgo{\ifx\addid\undefined\else\addid{item}{\the\itemcount}\fi}
+
+\def\algin{\par\nobreak{\it \localestr{alg:in}:\/} }
+\def\algout{\par\nobreak\parindent=0pt{\it \localestr{alg:in}:\/} }
+\def\alginbreak{\hfil\break\hphantom{\it \localestr{alg:out}:\/} }
+\def\algalias#1{ (#1)}
+
+% Algorithm name in text or in a formula
+\protected\def\alg#1{\leavevmode\hbox{\csc #1}}
+
+% Comments
+\def\algcmt#1{\unskip~~\hfill\fullcmt{#1}\ignorespaces}
+\def\fullcmt#1{{$\triangleleft$\hskip0.5em\it #1}}

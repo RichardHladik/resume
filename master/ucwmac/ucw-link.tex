@@ -1,0 +1,74 @@
+% The UCW Macro Collection: Destinations and links
+% Written by Martin Mares <mj@ucw.cz> in 2018 and placed into public domain
+% -------------------------------------------------------------------------
+
+\ucwdefmodule{link}
+
+% Should clickable links be produced?
+\newif\ifclickable
+\ifpdf
+	\clickabletrue
+\else
+	\clickablefalse
+\fi
+
+% Common style of all clickable links
+\pdflinkmargin=1pt
+\def\commonlinkargs{height \the\dimexpr\ht\strutbox-0.5pt\relax depth \the\dimexpr\dp\strutbox-0.5pt\relax attr {/C [0 0 0.5] /Border [0 0 2]}}
+
+% Define a PDF destination for the current position at the page
+\def\destpos#1{\ifclickable\pdfdest name {#1} xyz\relax\fi}
+
+% Define a PDF destination for the current page
+\def\destpage#1{\ifclickable\pdfdest name {#1} fit\relax\fi}
+
+% Typeset a clickable link to the given destination
+% \link{dest}{text}
+\def\link#1#2{%
+	\ifclickable
+		\pdfstartlink\commonlinkargs goto name {#1}\relax
+		#2%
+		\pdfendlink\relax
+	\else
+		#2%
+	\fi
+}
+
+% Typeset a clickable link to the given page number
+% (This does not use named destinations. We use it in tables of contents and indices,
+% where absolute page numbers are known from other sources.)
+% \linkpage{page}{text}
+\def\linkpage#1#2{\ifclickable\pdfstartlink\commonlinkargs goto page #1 {/Fit}\relax #2\pdfendlink\else #2\fi}
+
+% Typeset a clickable URL
+% \url{http://example.com/}
+\def\url{\begingroup\allowurlchars\urlaux}
+\def\urlaux#1{\linkurlaux{#1}{\displayurl #1^^X}}
+
+% Typeset a clickable link to the given URL
+% \linkurl{http://example.com/}{text}
+\def\linkurl{\begingroup\allowurlchars\linkurlaux}
+\def\linkurlaux#1#2{\endgroup
+	\leavevmode
+	\ifclickable
+		\pdfstartlink\commonlinkargs user {/Subtype/Link /A << /Type/Action /S/URI /URI(#1) >>}\relax
+	\fi
+	#2%
+	\ifclickable
+		\pdfendlink
+	\fi
+}
+
+% Catcode each special character valid in URL to 'other'
+\def\allowurlchars{\catcode`\#=12\catcode`\_=12\catcode`\%=12\catcode`\&=12\catcode`\$=12\catcode`\~=12\relax}
+
+% Style switches and the beginning/end of an URL
+\let\urlprefix\it
+\let\urlsuffix\/
+
+% Kern to place between "//" in an URL
+\newdimen\urlinterslashkern
+\urlinterslashkern=-0.1em
+
+% Internal macro for typesetting of URLs
+\def\displayurl#1:#2#3^^X{{\urlprefix #1:#2\ifx#2/\kern\urlinterslashkern\fi#3\urlsuffix}}

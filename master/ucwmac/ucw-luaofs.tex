@@ -1,0 +1,216 @@
+\ucwdefmodule{luaofs}
+\ucwdefmodule{ofs}
+
+\input luaotfload.sty
+\input ofs.tex
+\nofontmessages
+
+\ofsputfamlist{^^JLatinModern:}
+
+\def\LMfeat#1{:mode=base;script=latn;+tlig}
+
+%%% LMRoman %%%
+
+\ofsdeclarefamily [LMRoman] {%
+   \loadtextfam lmr;%
+                lmbx;%
+                lmti;%
+                lmbxti;;%
+   \newvariant 8 \sl   (Slanted)     lmsl;;%
+   \newvariant 9 \bxsl (BoldSlanted) lmbxsl;;%
+   \newvariant a \bo   (BoldNormal)  lmb;;%
+   \newvariant b \bosl (BoldNormalSlanted)  lmbsl;;%
+   \newvariant c \csc  (CapsAndSmallCaps)   lmcsc;;%
+}
+
+\registertfm lmr        -      LMRoman10-Regular\LMfeat{}
+\registertfm lmr     0pt-6pt   LMRoman5-Regular\LMfeat{}
+\registertfm lmr     6pt-7pt   LMRoman6-Regular\LMfeat{}
+\registertfm lmr     7pt-8pt   LMRoman7-Regular\LMfeat{}
+\registertfm lmr     8pt-9pt   LMRoman8-Regular\LMfeat{}
+\registertfm lmr     9pt-10pt  LMRoman9-Regular\LMfeat{}
+\registertfm lmr    10pt-12pt  LMRoman10-Regular\LMfeat{}
+\registertfm lmr    12pt-17pt  LMRoman12-Regular\LMfeat{}
+\registertfm lmr    17pt-*     LMRoman17-Regular\LMfeat{}
+
+\registertfm lmbx       -      LMRoman10-Bold\LMfeat{}
+\registertfm lmbx    0pt-6pt   LMRoman5-Bold\LMfeat{}
+\registertfm lmbx    6pt-7pt   LMRoman6-Bold\LMfeat{}
+\registertfm lmbx    7pt-8pt   LMRoman7-Bold\LMfeat{}
+\registertfm lmbx    8pt-9pt   LMRoman8-Bold\LMfeat{}
+\registertfm lmbx    9pt-10pt  LMRoman9-Bold\LMfeat{}
+\registertfm lmbx   10pt-12pt  LMRoman10-Bold\LMfeat{}
+\registertfm lmbx   12pt-*     LMRoman12-Bold\LMfeat{}
+
+\registertfm lmti       -      LMRoman10-Italic\LMfeat{}
+\registertfm lmti    0pt-8pt   LMRoman7-Italic\LMfeat{}
+\registertfm lmti    8pt-9pt   LMRoman8-Italic\LMfeat{}
+\registertfm lmti    9pt-10pt  LMRoman9-Italic\LMfeat{}
+\registertfm lmti   10pt-12pt  LMRoman10-Italic\LMfeat{}
+\registertfm lmti   12pt-*     LMRoman12-Italic\LMfeat{}
+
+\registertfm lmbxti     -      LMRoman10-BoldItalic\LMfeat{}
+
+\registertfm lmsl       -      LMRomanSlant10-Regular\LMfeat{}
+\registertfm lmsl    0pt-9pt   LMRomanSlant8-Regular\LMfeat{}
+\registertfm lmsl    9pt-10pt  LMRomanSlant9-Regular\LMfeat{}
+\registertfm lmsl   10pt-12pt  LMRomanSlant10-Regular\LMfeat{}
+\registertfm lmsl   12pt-17pt  LMRomanSlant12-Regular\LMfeat{}
+\registertfm lmsl   17pt-*     LMRomanSlant17-Regular\LMfeat{}
+
+\registertfm lmbxsl     -      LMRomanSlant10-Bold\LMfeat{}
+
+\registertfm lmb        -      LMRomanDemi10-Regular\LMfeat{}
+
+\registertfm lmbsl      -      LMRomanDemi10-Oblique\LMfeat{}
+
+\registertfm lmcsc      -      LMRomanCaps10-Regular\LMfeat{}
+
+\setfonts[LMRoman/]
+
+%%% LMSans %%%
+
+\ofsdeclarefamily [LMSans] {%
+   \loadtextfam lmss;%
+                lmssbx;%
+                lmsso;%
+                lmssbo;;%
+}
+
+\registertfm lmss       -      LMSans10-Regular\LMfeat{}
+\registertfm lmss    0pt-9pt   LMSans8-Regular\LMfeat{}
+\registertfm lmss    9pt-10pt  LMSans9-Regular\LMfeat{}
+\registertfm lmss   10pt-12pt  LMSans10-Regular\LMfeat{}
+\registertfm lmss   12pt-17pt  LMSans12-Regular\LMfeat{}
+\registertfm lmss   17pt-*     LMSans17-Regular\LMfeat{}
+
+\registertfm lmssbx     -      LMSans10-Bold\LMfeat{}
+
+\registertfm lmsso      -      LMSans10-Oblique\LMfeat{}
+\registertfm lmsso   0pt-9pt   LMSans8-Oblique\LMfeat{}
+\registertfm lmsso   9pt-10pt  LMSans9-Oblique\LMfeat{}
+\registertfm lmsso  10pt-12pt  LMSans10-Oblique\LMfeat{}
+\registertfm lmsso  12pt-17pt  LMSans12-Oblique\LMfeat{}
+\registertfm lmsso  17pt-*     LMSans17-Oblique\LMfeat{}
+
+\registertfm lmssbo     -      LMSans10-BoldOblique\LMfeat{}
+
+%%% LMSansDC %%%
+
+\ofsdeclarefamily [LMSansDC] {%
+   \loadtextfam lmssdc;%
+                ;%
+                lmssdo;%
+                ;;%
+}
+
+\registertfm lmssdc     -      LMSansDemiCond10-Regular\LMfeat{}
+
+\registertfm lmssdo     -      LMSansDemiCond10-Oblique\LMfeat{}
+
+%%% LMMono %%%
+
+\ofsdeclarefamily [LMMono] {%
+   \loadtextfam lmtt;%
+                lmtk;%
+                lmtti;%
+                ;;%
+   \newvariant 8 \sl   (Slanted)     lmtto;;%
+   \newvariant 9 \bxsl (BoldSlanted) lmtko;;%
+   \newvariant c \csc  (CapsAndSmallCaps)   lmtcsc;;%
+}
+
+\registertfm lmtt       -      LMMono10-Regular\LMfeat{}
+\registertfm lmtt    0pt-9pt   LMMono8-Regular\LMfeat{}
+\registertfm lmtt    9pt-10pt  LMMono9-Regular\LMfeat{}
+\registertfm lmtt   10pt-12pt  LMMono10-Regular\LMfeat{}
+\registertfm lmtt   12pt-*     LMMono12-Regular\LMfeat{}
+
+\registertfm lmtk       -      LMMonoLt10-Bold\LMfeat{}
+
+\registertfm lmtti      -      LMMono10-Italic\LMfeat{}
+
+\registertfm lmtto      -      LMMonoSlant10-Regular\LMfeat{}
+
+\registertfm lmtko      -      LMMonoLt10-BoldOblique\LMfeat{}
+
+\registertfm lmtcsc     -      LMMonoCaps10-Regular\LMfeat{}
+
+\newfam\ttfam
+\loadmathfam\ttfam[/LMMono10-Regular\LMfeat{}]
+
+%%% LMMonoCondensed %%%
+
+\ofsdeclarefamily [LMMonoCondensed] {%
+   \loadtextfam lmtlc;%
+                ;%
+                lmtlco;%
+                ;;%
+}
+
+\registertfm lmtlc      -      LMMonoLtCond10-Regular\LMfeat{}
+
+\registertfm lmtlco     -      LMMonoLtCond10-Oblique\LMfeat{}
+
+%%% UCW extensions %%%
+
+\ofsputfamlist{^^JUCW:}
+
+\ofsdeclarefamily [BlackboardBold] {%
+   \loadtextfam bbm;%
+		;%
+		;%
+		;\defaultextraenc;%
+}
+
+\registertfm bbm     -      bbm10
+\registertfm bbm  0pt-6pt   bbm5
+\registertfm bbm  6pt-7pt   bbm6
+\registertfm bbm  7pt-8pt   bbm7
+\registertfm bbm  8pt-9pt   bbm8
+\registertfm bbm  9pt-10pt  bbm9
+\registertfm bbm  10pt-12pt bbm10
+\registertfm bbm  12pt-17pt bbm12
+\registertfm bbm  17pt-*    bbm17
+
+% \bb - blackboard bold math font
+
+\newfam\bbfam
+\def\bb{\fam\bbfam}
+
+\def\loadbbm{%
+	\loadmathfam\bbfam[/bbm]%
+}
+\loadbbm
+
+%%% Font size switches %%%
+
+% Recalculate line spacing for a given point size of the font (assuming CM-like metrics).
+% Also sets \strut and \topskip.
+\def\setbaselines#1{%
+	\dimen0=1pt
+	\dimen0=#1\dimen0
+	\normalbaselineskip=1.2\dimen0
+	\normallineskip=0.1\dimen0
+	\setbox\strutbox=\hbox{\vrule height 0.85\dimen0 depth 0.35\dimen0 width 0pt}%
+	\topskip=1\dimen0
+	\normalbaselines
+}
+
+% Switch to a specified font size (including math, line spacing etc.)
+\def\settextsize#1{%
+	\def\fomenc{CM}%
+	\setfonts[/#1]%
+	\setmath[//]%
+	\setbaselines{#1}%
+	\loadbbm
+}
+\def\twelvepoint{\settextsize{12}}
+
+%%% Various hacks %%%
+
+% Re-define \tt, so that it works in both text and math mode
+\def\tt{\ifmmode\fam\ttfam\else\setfonts[LMMono/]\fi}
+
+% Re-define ucwmac's \fontfont
+\let\footfont=\tenrm

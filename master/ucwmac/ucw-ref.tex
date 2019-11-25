@@ -1,0 +1,69 @@
+% The UCW Macro Collection: References
+% Written by Martin Mares <mj@ucw.cz> in 2018 and placed into public domain
+% -------------------------------------------------------------------------
+
+\ucwdefmodule{ref}
+\ucwmodule{link}
+
+% We maintain a collection of objects. Each object has:
+%    - type (namespace -- e.g., chapter)
+%    - identifier (alphanumeric string used to refer to the object in TeX source)
+%    - label (to be typeset in clickable links -- e.g., chapter number)
+%    - location (it is tied to a specific place in the output document)
+
+% Some output formats (e.g., EPUB) have output split to multiple files.
+% We need to keep track of the file name for every object.
+% When producing a PDF, it is always empty.
+\def\refcurrentfile{}
+
+% An auxiliary file to which we write definitions of all identifiers
+\newwrite\ids
+\def\writeid#1#2{\immediate\write\ids{\string\iddef{#1}{#2}{\refcurrentfile}}}
+\def\delayedwriteid#1#2{\write\ids{\string\iddef{#1}{#2}{\refcurrentfile}}}
+
+% Used in auxiliary files
+\def\iddef#1#2#3{\ifcsname id:#1\endcsname\ucwwarn{Identifier #1 re-defined}\else
+\expandafter\def\csname id:#1\endcsname{#2}%
+\expandafter\def\csname ff:#1\endcsname{#3}%
+\fi}
+
+% Read the auxiliary file from the previous run of TeX, create a new one
+\immediate\openin\ids=\jobname.ids.aux
+\ifeof\ids
+\else
+\input \jobname.ids.aux
+\fi
+\immediate\closein\ids
+\immediate\openout\ids=\jobname.ids.aux
+
+% Define an object. It is called from macros with optional arguments
+% as \addid{type}{label}. It defines a new object whose identifier is the
+% optional argument.
+% It sets \currentid to either ID prefixed by its type, or to \relax.
+\def\addid#1#2{%
+	\ifx\optarg\relax
+		\let\currentid\relax
+	\else
+		\edef\currentid{#1\optarg}%
+		\writeid{\currentid}{#2}%
+		\destpos{\currentid}%
+	\fi
+}
+
+% A low-level interface for typesetting references: produces a clickable link
+% to the identifier #2 of type #1 with a label translated by macro #3 (use \relax
+% for no translation).
+\def\reflink#1#2#3{\expandafter\ifx\csname id:#1#2\endcsname\relax
+	{\ifx\bo\undefined\bf\else\bo\fi ??}%
+	\immediate\write16{*** Warning: Reference #1 undefined ***}%
+\else
+	\link{#1#2}{#3{\csname id:#1#2\endcsname}}%
+\fi
+}
+
+% Typeset a link to identifier #2 of type #1
+\def\ref#1#2{\reflink{#1}{#2}\relax}
+
+% Define an identifier of type page pointing to the current page
+\def\pageid#1{\delayedwriteid{page#1}{\the\count0}\destpage{page#1}}
+\def\pageref{\ref{page}}

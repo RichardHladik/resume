@@ -1,0 +1,92 @@
+%% Macros for typesetting of labels
+
+\ucwdefmodule{labels}
+
+% Default page parameters. You can change them before calling \setuplabels.
+\setmargins{0pt}
+\setuppage
+
+% Do we want rules around each label?
+\newif\iflabelrules
+\labelrulesfalse
+
+% Do we want cropmarks?
+\newif\iflabelcropmarks
+\labelcropmarksfalse
+\def\labelcropm{\iflabelcropmarks\hbox to 0pt{\hss\vbox to \labelh{\crosshair{5pt}\vss\crosshair{5pt}}}\fi}
+
+% Margins of each label
+\newdimen\labelhmargin
+\labelhmargin=5mm
+
+\newdimen\labelvmargin
+\labelvmargin=5mm
+
+% Internals
+\newdimen\labelw
+\newdimen\labelh
+\newcount\labelnum
+
+% Prepare of typesetting of #2 rows per #1 labels
+\def\setuplabels#1#2{
+	\labelw=\hsize
+	\divide\labelw by #1
+	\labelh=\vsize
+	\divide\labelh by #2
+	\labelnum=#1
+	\multiply\labelnum by #2
+	\offinterlineskip
+	\parindent=0pt
+	\parskip=0pt
+	\rightskip=0pt plus 0.1pt
+}
+
+% Typeset one label as a box (in most cases, you want to use \label instead)
+\long\def\labelbox#1{\hbox to \labelw{%
+  \labelcropm
+  \iflabelrules\vrule\fi
+  \hss
+  \vbox to \labelh{%
+    \iflabelrules\hrule\fi
+    \vss
+    \hbox to \labelw{%
+      \hss
+      \vbox to \labelh{%
+        \vss
+        \dimen0=\labelh
+        \advance\dimen0 by -2\labelvmargin
+        \vbox to \dimen0{%
+          \hsize=\labelw
+          \advance\hsize by -2\labelhmargin
+          \normalbaselines
+          #1
+	}%
+        \vss
+      }%
+      \hss
+    }
+    \vss
+    \iflabelrules\hrule\fi
+  }%
+  \hss
+  \labelcropm
+  \iflabelrules\vrule\fi
+  }%
+}
+
+% Typeset one label (#1 is expected to have the exact height, so it usually ends with a \vfil)
+\long\def\label#1{\leavevmode\labelbox{#1}\penalty -100}
+
+% Typeset #1 copies of label #2
+\newcount\labelcount
+\long\def\labels#1#2{{\leavevmode\setbox0=\labelbox{#2}%
+  \labelcount=#1%
+  \loop
+    \copy0
+    \penalty -100
+    \advance\labelcount by -1
+  \ifnum\labelcount>0\repeat
+}}
+
+% Fill the whole page with copies of a label
+\long\def\labelfill#1{\labels\labelnum{#1}}

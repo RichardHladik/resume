@@ -1,0 +1,22 @@
+% The UCW Macro Collection: PDF meta-data (requires LuaTeX)
+% Written by Martin Mares <mj@ucw.cz> in 2018 and placed into public domain
+% -------------------------------------------------------------------------
+
+\ucwdefmodule{pdfmeta}
+
+\ifx\directlua\undefined
+	\def\pdfmetainfo#1#2{}%
+	\def\pdfmetaoutline#1#2#3{}%
+\endinput\fi
+
+\directlua{require('ucw-pdfmeta.lua')}
+
+% Set entry in Info dictionary (usual keys are Author and Title)
+% \pdfmetainfo{key}{value}
+\def\pdfmetainfo#1#2{\directlua{pdfmeta.set_info('\luaescapestring{#1}', '\luaescapestring{#2}')}}
+
+% Add entry to the document outline
+% \pdfmetaoutline{chapter.section.subsec.etc}{link-destination}{text}
+\def\pdfmetaoutline#1#2#3{%
+	\directlua{pdfmeta.add_outline('\luaescapestring{#1}', '\luaescapestring{#2}', '\luaescapestring{#3}')}%
+}
