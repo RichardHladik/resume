@@ -434,7 +434,7 @@
 % \colorset\rgb{1 0 0} replaces the top color on the stack
 % \colorpop pops the top color
 % \colorlocal\rgb{1 0 0} set a color locally until the end of the current group
-\chardef\colorstk=\pdfcolorstackinit page direct{0 g 0 G}
+%\chardef\colorstk=\pdfcolorstackinit page direct{0 g 0 G}
 \def\colorset#1{\pdfcolorstack\colorstk set #1}
 \def\colorpush#1{\pdfcolorstack\colorstk push #1}
 \def\colorpop{\pdfcolorstack\colorstk pop}

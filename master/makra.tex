@@ -9,11 +9,13 @@
 \def\rmfamily{Fira Sans Book}
 \def\bffamily{Fira Sans SemiBold}
 \newdimen\fontsize
+\newdimen\smallerfontsize
 \fontsize=11pt
+\smallerfontsize=10pt
 \font\rm="\rmfamily" at \fontsize
 \font\it="\rmfamily/I" at \fontsize
 \font\bf="\bffamily" at \fontsize
-\font\sl="Fira Sans Condensed Light" at \fontsize
+\font\sl="Fira Sans Condensed Light" at \smallerfontsize
 \rm
 \baselineskip=1.3\fontsize
 \parskip=.2\fontsize
@@ -29,4 +31,5 @@
 \def\link#1#2{\global\advance\fcount by1\relax#2\footnote{$^\the\fcount$}{\url{#1}}}
 \def\url#1{{\it #1}}
 \def\Cpp{C++}
+\def\Cis{C\#}
 \def\fancy#1#2#3{{\parskip=0pt {\bf #1} – {\it #2}\par\vskip -.2\baselineskip{\sl #3}\par}}
