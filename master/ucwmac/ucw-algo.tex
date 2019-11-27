@@ -16,6 +16,7 @@
 % Localized strings
 \localedef{0}{alg:alg}{Algorithm}
 \localedef{0}{alg:proc}{Procedure}
+\localedef{0}{alg:func}{Function}
 \localedef{0}{alg:in}{Input}
 \localedef{0}{alg:out}{Output}
 
@@ -65,6 +66,7 @@
 \def\typedalgo#1#2{\algoinit {\bo #1\/} \alg{#2}}
 \def\algo#1{\typedalgo{\localestr{alg:alg}}{#1}}
 \def\proc#1{\typedalgo{\localestr{alg:proc}}{#1}}
+\def\func#1{\typedalgo{\localestr{alg:func}}{#1}}
 \def\headlessalgo{\algoinit}
 
 \def\endalgo{\endlist\endgroup}
@@ -82,8 +84,8 @@
 \optdef\algoitemgo{\ifx\addid\undefined\else\addid{item}{\the\itemcount}\fi}
 
 \def\algin{\par\nobreak{\it \localestr{alg:in}:\/} }
-\def\algout{\par\nobreak\parindent=0pt{\it \localestr{alg:in}:\/} }
-\def\alginbreak{\hfil\break\hphantom{\it \localestr{alg:out}:\/} }
+\def\algout{\par\nobreak\parindent=0pt{\it \localestr{alg:out}:\/} }
+\def\alginbreak{\hfil\break\hphantom{\it \localestr{alg:in}:\/} }
 \def\algalias#1{ (#1)}
 
 % Algorithm name in text or in a formula

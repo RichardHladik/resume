@@ -1,0 +1,66 @@
+This is ucwmac -- a set of TeX macros built on plain TeX
+
+It was written by Martin Mares and several other authors and placed into
+public domain.
+
+Send all comments to <mj@ucw.cz>.
+
+============================================================================
+
+This is a preview of ucwmac 2.0. Many new features were introduced, but their
+exact behavior can still change. When we consider it stable enough, we will
+release the real version 2.0.
+
+To get the full feature set of ucwmac, please input ucwmac2.tex.
+With bare ucwmac.tex, you will get backward-compatible behavior -- it will
+still include most new features, but not all of them. In particular, default
+settings of some parameters will differ.
+
+Important changes in version 2:
+
+  o  We now require a TeX engine based on e-TeX. This includes all modern
+     TeX engines (pdfTeX, LuaTeX, XeTeX). Some features of ucwmac require
+     pdfTeX (e.g., clickable links), some require LuaTeX (PDF meta-data).
+
+  o  A new mechanism for lists was introduced. You can now use
+
+	% An itemized list with bullets
+	\list{o}
+	\:first
+	\:second
+	\:third
+	\endlist
+
+	% A numbered list
+	\list{n.}
+	\:first		% 1. first
+	\:second	% 2. second
+	\endlist
+
+	% Alphabetic list with parentheses
+	\list{(a)}
+	\:first		% (a) first
+	\:second	% (b) second
+	\endlist
+
+     For more, see comments in ucwmac2.tex.
+
+  o  Several problems in compatibility with LuaTeX have been fixed.
+
+  o  The ucwmac now consists of several modules, which can be imported by
+     \ucwmodule{module-name}. Repeated imports have no effect.
+
+  o  Added macros for working with pdfTeX's color stack.
+
+  o  Added a "link" module for producing clickable links.
+
+  o  Added an "algo" module for typesetting algorithms. Since it typesets
+     language-dependent strings, a simple localization mechanism is included.
+
+  o  Added a "ref" module for maintaining cross-references.
+
+  o  Added a "pdfmeta" module (LuaTeX only) for maintaining PDF metadata.
+
+  o  Added a "luaofs" module for setting up Latin Modern fonts in LuaTeX via OFS.
+
+  o  Introduced infrastructure for macros with optional parameters.

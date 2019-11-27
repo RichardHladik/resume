@@ -40,35 +40,118 @@
 % \linkpage{page}{text}
 \def\linkpage#1#2{\ifclickable\pdfstartlink\commonlinkargs goto page #1 {/Fit}\relax #2\pdfendlink\else #2\fi}
 
+% Typesetting of URLs is tricky:
+%
+%   - They can contain various characters considered special by TeX.
+%   - We want to adjust appearance of "//", "_", "~" according to font.
+%   - "--" should not produce a ligature.
+%   - We want to insert a breakpoint after "/", "?", "&".
+%   - We need the raw form of the URL for PDF links.
+%   - We cannot rely purely on changing catcodes, as we sometimes need
+%     to parse URLs given as arguments of macros.
+%   - Sometimes, it is useful to insert a manual line break or another
+%     typesetting hack to the URL.
+%
+% Therefore:
+%
+%   - In our front-end macros (\url, \linkurl) we switch catcodes
+%     to accept '%' and '#' as normal characters; if the macros are
+%     called indirectly, these characters must be escaped as '\%' and '\#'.
+%   - The URL is preprocessed: special characters (with their original
+%     catcode) are replaced by calls of auxiliary macros.
+%   - When producing PDF links, the auxiliary macros expand to ordinary
+%     ASCII characters.
+%   - When typesetting the URL, the auxiliary macros expand differently.
+%     Furthermore, they can be temporarily re-defined in the \urlprefix macro.
+%   - "\\" (which is usually called to produce a line break) disappears in PDF links.
+%   - If you use \urlhack{X} in the URL, it is typeset as X, but it disappears
+%     in PDF links.
+%   - If you call a custom macro in the URL, you can modify its definition
+%     for typesetting in \urlprefix and for PDF links by appending to \urlplainascii.
+
 % Typeset a clickable URL
 % \url{http://example.com/}
-\def\url{\begingroup\allowurlchars\urlaux}
-\def\urlaux#1{\linkurlaux{#1}{\displayurl #1^^X}}
+\def\url{\begingroup\begingroup\allowurlchars\urlaux}
+\def\urlaux#1{\urlauxarg{#1}\linkurlauxB{\displayurl}}
 
 % Typeset a clickable link to the given URL
 % \linkurl{http://example.com/}{text}
-\def\linkurl{\begingroup\allowurlchars\linkurlaux}
-\def\linkurlaux#1#2{\endgroup
+\def\linkurl{\begingroup\begingroup\allowurlchars\linkurlaux}
+\def\linkurlaux#1{\urlauxarg{#1}\linkurlauxB}
+\def\linkurlauxB#1{%
 	\leavevmode
 	\ifclickable
-		\pdfstartlink\commonlinkargs user {/Subtype/Link /A << /Type/Action /S/URI /URI(#1) >>}\relax
+		{%
+			\urlplainascii
+			\pdfstartlink\commonlinkargs user {/Subtype/Link /A << /Type/Action /S/URI /URI(\tmpb) >>}\relax
+		}%
 	\fi
-	#2%
+	#1%
 	\ifclickable
 		\pdfendlink
 	\fi
+	\endgroup		% opened in \url or \linkurl
 }
 
-% Catcode each special character valid in URL to 'other'
-\def\allowurlchars{\catcode`\#=12\catcode`\_=12\catcode`\%=12\catcode`\&=12\catcode`\$=12\catcode`\~=12\relax}
+% Catcode '%' and '#' to 'other'
+\def\allowurlchars{\catcode`\%=12\catcode`\#=12\relax}
 
-% Style switches and the beginning/end of an URL
+\def\urlauxarg#1{%
+	\endgroup		% opened in \url or \linkurl
+	\toks0={#1}\edef\tmpb{\the\toks0}%
+	\replacestrings{//}{\urlslashslash}%
+	\replacestrings{_}{\urlunderscore}%
+	\replacestrings{~}{\urltilde}%
+	\replacestrings{/}{\urlslash}%
+	\replacestrings{?}{\urlquestion}%
+	\replacestrings{&}{\urlamp}%
+	\replacestrings{=}{\urlequal}%
+	\replacestrings{-}{\urlminus}%
+}
+
+% Style switches at the beginning/end of an URL (feel free to re-define them)
 \let\urlprefix\it
 \let\urlsuffix\/
+
+% Default appearance of characters special in URLs
+\def\urlslashslash{/\kern\urlinterslashkern/}
+\def\urlunderscore{\_}
+\def\urltilde{{\tt\char126}}
+\def\urlslash{/\penalty100\relax}
+\def\urlquestion{?\penalty100\relax}
+\def\urlamp{\&\penalty100\relax}
+\def\urlequal{=\penalty100\relax}
+\def\urlminus{\hbox{-}}
+\def\urlhack#1{#1}
 
 % Kern to place between "//" in an URL
 \newdimen\urlinterslashkern
 \urlinterslashkern=-0.1em
 
-% Internal macro for typesetting of URLs
-\def\displayurl#1:#2#3^^X{{\urlprefix #1:#2\ifx#2/\kern\urlinterslashkern\fi#3\urlsuffix}}
+% Switch auxiliary macros, so special characters expand to plain ASCII characters
+% (since we need to replace them in the expand processor, we cannot use \let for that)
+% If you want to modify expansion of your macros, extend \urlplainascii using \appendef.
+{
+\lccode`A=`\_
+\lccode`B=`\~
+\lccode`C=`\&
+\lccode`D=`\%
+\lccode`E=`\#
+\lowercase{\gdef\urlplainascii{%
+	\def\urlslashslash{//}%
+	\def\urlunderscore{A}%
+	\def\urltilde{B}%
+	\def\urlslash{/}%
+	\def\urlquestion{?}%
+	\def\urlamp{C}%
+	\def\urlequal{=}%
+	\def\urlminus{-}%
+	\def\%{D}%
+	\def\#{E}%
+	\def\\{}%
+	\def\urlhack##1{}%
+}}}
+
+% Typeset the URL stored in \tmpb. In most cases, this is used internally by \url,
+% but you can call it explicity from the second argument of \linkurl to typeset the current URL.
+\def\displayurl{{\urlprefix\tmpb\urlsuffix}}

@@ -24,7 +24,7 @@
 	\pdfpkresolution=600	% Provide a reasonable default
 \fi\fi
 
-\ifx\directlua\undefined\else
+\ifx\luatexversion\undefined\else
 	% In LuaTeX \pdfpkresolution is not enough
 	\directlua{kpse.init_prog("luatex", 600, "ljfour")}
 \fi
@@ -61,13 +61,25 @@
 
 \def\ucwwarn#1{\immediate\write16{*** UCWmac warning: #1 ***}}
 
+% Replace all occurrences of #1 in \tmpb by #2.
+% Thanks to Petr Olsak's OPmac for an efficient implementation.
+\bgroup \catcode`!=3 \catcode`?=3
+\gdef\replacestrings#1#2{\long\def\replacestringsA##1#1{\def\tmpb{##1}\replacestringsB}%
+   \long\def\replacestringsB##1#1{\ifx!##1\relax \else\appendef\tmpb{#2##1}%
+      \expandafter\replacestringsB\fi}%
+   \expandafter\replacestringsA\tmpb?#1!#1%
+   \long\def\replacestringsA##1?{\def\tmpb{##1}}\expandafter\replacestringsA\tmpb
+}
+\egroup
+
 %%% Page size and margins %%%
 
 % If you modify these registers, call \setuppage afterwards
 \ifx\luatexversion\undefined
 	% In LuaTeX, \pagewidth and \pageheight are primitive
-	\newdimen\pagewidth
-	\newdimen\pageheight
+	% (also, we need \csname here, because \newdimen is \outer)
+	\csname newdimen\endcsname\pagewidth
+	\csname newdimen\endcsname\pageheight
 \fi
 \newdimen\leftmargin
 \newdimen\rightmargin
@@ -251,6 +263,7 @@
 %	#.		% with a dot behind
 %	#)		% with a parenthesis behind
 %	(#)		% enclosed in parentheses
+%	[#]		% enclosed in square brackets
 %
 % Historic usage:
 %
@@ -329,10 +342,12 @@
 	\ifx#1^^X%
 	\else
 		\ifx#1((%
+		\else\ifx#1[[%
 		\else\ifx#1))%
+		\else\ifx#1]]%
 		\else\ifx#1..%
 		\else=%
-		\fi\fi\fi
+		\fi\fi\fi\fi\fi
 		\expandafter\markertometa
 	\fi
 }
@@ -342,9 +357,11 @@
 	\else
 		\ifx#1(%
 		\else\ifx#1)%
+		\else\ifx#1[%
+		\else\ifx#1]%
 		\else\ifx#1.%
 		\else#1%
-		\fi\fi\fi
+		\fi\fi\fi\fi\fi
 		\expandafter\markertoinner
 	\fi
 }
@@ -370,6 +387,7 @@
 \sdef{metaitem:=.}{\markerinner.}
 \sdef{metaitem:=)}{\markerinner)}
 \sdef{metaitem:(=)}{(\markerinner)}
+\sdef{metaitem:[=]}{[\markerinner]}
 
 % Old-style lists
 
@@ -434,7 +452,7 @@
 % \colorset\rgb{1 0 0} replaces the top color on the stack
 % \colorpop pops the top color
 % \colorlocal\rgb{1 0 0} set a color locally until the end of the current group
-%\chardef\colorstk=\pdfcolorstackinit page direct{0 g 0 G}
+\chardef\colorstk=\pdfcolorstackinit page direct{0 g 0 G}
 \def\colorset#1{\pdfcolorstack\colorstk set #1}
 \def\colorpush#1{\pdfcolorstack\colorstk push #1}
 \def\colorpop{\pdfcolorstack\colorstk pop}
@@ -468,7 +486,7 @@
 \def\ucwmodule#1{
 	\ifcsname ucwmod:#1\endcsname
 	\else
-		\input ucwmac/ucw-#1.tex
+		\input ucw-#1.tex
 	\fi
 }
 

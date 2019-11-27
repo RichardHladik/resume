@@ -44,7 +44,7 @@
 	\ifx\optarg\relax
 		\let\currentid\relax
 	\else
-		\edef\currentid{#1\optarg}%
+		\edef\currentid{#1:\optarg}%
 		\writeid{\currentid}{#2}%
 		\destpos{\currentid}%
 	\fi
@@ -53,11 +53,11 @@
 % A low-level interface for typesetting references: produces a clickable link
 % to the identifier #2 of type #1 with a label translated by macro #3 (use \relax
 % for no translation).
-\def\reflink#1#2#3{\expandafter\ifx\csname id:#1#2\endcsname\relax
+\def\reflink#1#2#3{\expandafter\ifx\csname id:#1:#2\endcsname\relax
 	{\ifx\bo\undefined\bf\else\bo\fi ??}%
-	\immediate\write16{*** Warning: Reference #1 undefined ***}%
+	\immediate\write16{*** Warning: Reference #1:#2 undefined ***}%
 \else
-	\link{#1#2}{#3{\csname id:#1#2\endcsname}}%
+	\link{#1:#2}{#3{\csname id:#1:#2\endcsname}}%
 \fi
 }
 
