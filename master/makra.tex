@@ -1,5 +1,7 @@
 \input eplain
 \input ucwmac/ucwmac2
+\ucwmodule{luaofs}
+\ucwmodule{ref}
 \leftmargin=1.5cm
 \rightmargin=1.5cm
 \topmargin=1cm
@@ -7,29 +9,39 @@
 \setuppage
 \footline={}
 \def\rmfamily{Fira Sans Book}
+\def\itfamily{Fira Sans Book Italic}
 \def\bffamily{Fira Sans SemiBold}
 \newdimen\fontsize
 \newdimen\smallerfontsize
 \fontsize=11pt
 \smallerfontsize=10pt
 \font\rm="\rmfamily" at \fontsize
-\font\it="\rmfamily/I" at \fontsize
+\font\it="\itfamily" at \fontsize
 \font\bf="\bffamily" at \fontsize
 \font\sl="Fira Sans Condensed Light" at \smallerfontsize
 \rm
+\newif\ifafterheading
+\afterheadingfalse
+\let\oldpar\par
+\def\par{\afterheadingfalse\oldpar}
 \baselineskip=1.3\fontsize
 \parskip=.2\fontsize
 \font\fnad="\bffamily" at 36pt
 \font\fsek="\bffamily" at 17pt
 \parindent=0pt
-\def\sekce#1\par{\vskip .8\fontsize{\fsek#1}\par}
+\def\sekce#1\par{\vskip 12pt plus 4pt minus 4pt{\fsek#1}\par\vskip 0pt plus 2pt\afterheadingtrue}
 \def\dvoj#1! #2\par{\line{\hbox to .5\hsize{#1\hfil}\hbox{#2}\hfil}\par}
 \def\f[#1: #2]{{\bf #1:} #2}
 \def\g[#1]{\f[#1]\par}
 \newcount\fcount
 \fcount=0
-\def\link#1#2{\global\advance\fcount by1\relax#2\footnote{$^\the\fcount$}{\url{#1}}}
-\def\url#1{{\it #1}}
+\def\url#1#2{%
+ \colorpush\rgb{0 .2 .6}%
+ \linkurl{#1}{#2}%
+ \colorpop
+}
 \def\Cpp{C++}
 \def\Cis{C\#}
-\def\fancy#1#2#3{{\parskip=0pt {\bf #1} – {\it #2}\par\vskip -.2\baselineskip{\sl #3}\par}}
+\def\fancy#1#2#3{{\ifafterheading\else\medskip\fi\parskip=0pt {\bf #1} {\sl(#3)}~– {\it#2}\par}}
+\let\proj\fancy
+\raggedright
