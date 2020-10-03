@@ -2,10 +2,10 @@
 \input ucwmac/ucwmac2
 \ucwmodule{luaofs}
 \ucwmodule{ref}
-\leftmargin=1.5cm
-\rightmargin=1.5cm
-\topmargin=1cm
-\bottommargin=1cm
+\leftmargin=1.2cm
+\rightmargin=1.2cm
+\topmargin=8mm
+\bottommargin=8mm
 \setuppage
 \footline={}
 \def\rmfamily{Fira Sans Book}
@@ -45,3 +45,8 @@
 \def\fancy#1#2#3{{\ifafterheading\else\vskip 7pt plus 2pt minus 2pt\fi\parskip=0pt {\bf #1} {\sl(#3)}~– {\it#2}\par\vskip 0pt minus 2pt}}
 \let\proj\fancy
 \raggedright
+\def\todo#1{%
+ \colorpush\rgb{1 0 0}%
+ #1
+ \colorpop
+}
