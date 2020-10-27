@@ -28,11 +28,12 @@
 \parskip=.2\fontsize
 \font\fnad="\bffamily" at 36pt
 \font\fsek="\bffamily" at 17pt
+\font\fcontact="\rmfamily" at 12pt
 \parindent=0pt
 \def\sekce#1\par{\vskip 12pt plus 4pt minus 4pt{\fsek#1}\par\vskip 0pt plus 2pt\afterheadingtrue}
 \def\dvoj#1! #2\par{\line{\hbox to .5\hsize{#1\hfil}\hbox{#2}\hfil}\par}
 \def\f[#1: #2]{{\bf #1:} #2}
-\def\g[#1]{\f[#1]\par}
+\def\g[#1: #2]{\line{\fcontact\vrule height 4.5mm depth 1.5mm width 0pt\hbox to 7mm {\vbox{\vskip 1mm\img{height 5mm}{#1}\vskip -1mm}\hss} #2}}
 \newcount\fcount
 \fcount=0
 \def\url#1#2{%
@@ -50,3 +51,7 @@
  #1
  \colorpop
 }
+\def\img#1#2{{%
+  \pdfximage #1 {#2}%
+  \pdfrefximage\pdflastximage
+}}
