@@ -33,7 +33,7 @@
 \def\sekce#1\par{\vskip 12pt plus 4pt minus 4pt{\fsek#1}\par\vskip 0pt plus 2pt\afterheadingtrue}
 \def\dvoj#1! #2\par{\line{\hbox to .5\hsize{#1\hfil}\hbox{#2}\hfil}\par}
 \def\f[#1: #2]{{\bf #1:} #2}
-\def\g[#1: #2]{\hbox to .5\hsize{\fcontact\vrule height 4.5mm depth 1.5mm width 0pt\hbox to 7mm {\vbox{\vskip 1mm\img{height 5mm}{#1}\vskip -1mm}\hss} #2\hfil}}
+\def\g[#1: #2]{\hbox{\fcontact\vrule height 4.5mm depth 1.5mm width 0pt\hbox to 7mm {\vbox{\vskip 1mm\img{height 5mm}{#1}\vskip -1mm}\hss} #2}}
 \newcount\fcount
 \fcount=0
 \def\url#1#2{%

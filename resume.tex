@@ -6,17 +6,27 @@
 
 \newdimen\hei
 \hei=1.5cm
-\doublecolumns
- \vbox to \hei{
- {\vfill\fnad Richard Hladík}}
- \vbox to \hei{\vfill\parskip=0pt
- \line{\g[img/born.pdf: 1997]\hfil\g[img/home.pdf: Prague]}
- \line{\g[img/mail.pdf: work@uralyx.cz]\hfil\g[img/phone.pdf: +420 608 176 814]}
- \line{\g[img/github.pdf: \url{https://github.com/RichardHladik}{RichardHladik}]\hfil
- \g[img/www.pdf: \url{http://rihl.uralyx.cz}{rihl.uralyx.cz}]}
+\line{%
+ \vbox to \hei{\vss\hbox{\fnad Richard \kern1pt Hladík\ }\vss}
+ \hfil
+ \vbox to \hei{%
+  \vss
+  \g[img/born.pdf: 1997]
+  \g[img/mail.pdf: work@uralyx.cz]
+  \g[img/github.pdf: \url{https://github.com/RichardHladik}{RichardHladik}]
+  \vss
+ }%
+ \hfil
+ \vbox to \hei{%
+  \vss
+  \g[img/home.pdf: Prague, Czechia]
+  \g[img/phone.pdf: +420 608 176 814]
+  \g[img/www.pdf: \url{http://rihl.uralyx.cz}{rihl.uralyx.cz}]
+  \vss
+ }%
 }
-\endcolumns
 
+\vskip 3mm
 \doublecolumns
 
 \sekce Experience
