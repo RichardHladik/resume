@@ -13,8 +13,8 @@
 \def\bffamily{Fira Sans SemiBold}
 \newdimen\fontsize
 \newdimen\smallerfontsize
-\fontsize=11pt
-\smallerfontsize=10pt
+\fontsize=10pt
+\smallerfontsize=9pt
 \font\rm="\rmfamily" at \fontsize
 \font\it="\itfamily" at \fontsize
 \font\bf="\bffamily" at \fontsize
@@ -25,12 +25,12 @@
 \let\oldpar\par
 \def\par{\afterheadingfalse\oldpar}
 \baselineskip=1.3\fontsize
-\parskip=.2\fontsize
+\parskip=.15\fontsize
 \font\fnad="\bffamily" at 36pt
-\font\fsek="\bffamily" at 17pt
+\font\fsek="\bffamily" at 14pt
 \font\fcontact="\rmfamily" at 12pt
 \parindent=0pt
-\def\sekce#1\par{\vskip 12pt plus 4pt minus 4pt{\fsek#1}\par\vskip 0pt plus 2pt\afterheadingtrue}
+\def\sekce#1\par{\vskip 8pt plus 4pt minus 4pt{\fsek#1}\par\vskip 0pt plus 2pt\afterheadingtrue}
 \def\dvoj#1! #2\par{\line{\hbox to .5\hsize{#1\hfil}\hbox{#2}\hfil}\par}
 \def\f[#1: #2]{{\bf #1:} #2}
 \def\g[#1: #2]{\hbox{\fcontact\vrule height 4.5mm depth 1.5mm width 0pt\hbox to 7mm {\vbox{\vskip 1mm\img{height 5mm}{#1}\vskip -1mm}\hss} #2}}
@@ -45,7 +45,6 @@
 \def\Cis{C\#}
 \def\fancy#1#2#3{{\ifafterheading\else\vskip 7pt plus 2pt minus 2pt\fi\parskip=0pt {\bf #1} {\sl(#3)}~– {\it#2}\par\vskip 0pt minus 2pt}}
 \let\proj\fancy
-\raggedright
 \def\todo#1{%
  \colorpush\rgb{1 0 0}%
  #1
