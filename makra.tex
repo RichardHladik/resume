@@ -9,29 +9,34 @@
 \bottommargin=8mm
 \setuppage
 \footline={}
-\def\rmfamily{Fira Sans Book}
-\def\itfamily{Fira Sans Book Italic}
-\def\bffamily{Fira Sans SemiBold}
+\ifx\undefined\makingcv
+	\def\rmfamily{Fira Sans Book}
+	\def\itfamily{Fira Sans Book Italic}
+	\def\bffamily{Fira Sans SemiBold}
+	\def\slfamily{Fira Sans Condensed Light}
+\fi
 \newdimen\fontsize
 \newdimen\smallerfontsize
-\newskip\sekceskip
+\newskip\sekcebefore
+\newskip\sekceafter
 \ifdoublecolumn
 	\fontsize=11pt
 	\smallerfontsize=10pt
 	\font\fsek="\bffamily" at 17pt
 	\parskip=.2\fontsize
-	\sekceskip=12pt plus 4pt minus 4pt
+	\sekcebefore=12pt plus 4pt minus 4pt
 \else
 	\fontsize=10pt
 	\smallerfontsize=9pt
 	\font\fsek="\bffamily" at 14pt
-	\sekceskip=8pt plus 4pt minus 4pt
+	\sekcebefore=8pt plus 4pt minus 4pt
 	\parskip=.15\fontsize
 \fi
+\sekceafter=0pt plus 2pt
 \font\rm="\rmfamily" at \fontsize
 \font\it="\itfamily" at \fontsize
 \font\bf="\bffamily" at \fontsize
-\font\sl="Fira Sans Condensed Light" at \smallerfontsize
+\font\sl="\slfamily" at \smallerfontsize
 \rm
 \newif\ifafterheading
 \afterheadingfalse
@@ -41,14 +46,17 @@
 \font\fnad="\bffamily" at 36pt
 \font\fcontact="\rmfamily" at 12pt
 \parindent=0pt
-\def\sekce#1\par{\vskip 8pt plus 4pt minus 4pt{\fsek#1}\par\vskip 0pt plus 2pt\afterheadingtrue}
+\def\sekce#1\par{\vskip \sekcebefore{\fsek#1}\par\vskip \sekceafter\afterheadingtrue}
 \def\dvoj#1! #2\par{\line{\hbox to .5\hsize{#1\hfil}\hbox{#2}\hfil}\par}
 \def\f[#1: #2]{{\bf #1:} #2}
 \def\g[#1: #2]{\hbox{\fcontact\vrule height 4.5mm depth 1.5mm width 0pt\hbox to 7mm {\vbox{\vskip 1mm\img{height 5mm}{#1}\vskip -1mm}\hss} #2}}
 \newcount\fcount
 \fcount=0
+\def\urlcol{%
+	\rgb{0 .2 .6}%
+}
 \def\url#1#2{%
- \colorpush\rgb{0 .2 .6}%
+ \colorpush\urlcol%
  \linkurl{#1}{#2}%
  \colorpop
 }

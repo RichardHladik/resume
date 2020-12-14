@@ -1,0 +1,33 @@
+\def\rmfamily{CMU Serif}
+\def\itfamily{CMU Serif Italic}
+\def\bffamily{CMU Serif Bold}
+\def\slfamily{CMU Serif}
+\let\makingcv\relax
+\automatichyphenmode=1
+
+\input makra
+
+\leftmargin=1in
+\rightmargin=1in
+\topmargin=1in
+\bottommargin=1in
+\setuppage
+
+\font\fnad="\bffamily" at 22pt
+\font\fcontact="\rmfamily" at 10pt
+
+\def\g[#1: #2]{\hbox{\fcontact\vrule height 4.5mm depth 1.5mm width 0pt\hbox to 5mm {\vbox{\vskip 1mm\img{height 4mm}{#1}\vskip -1mm}\hss} #2}}
+
+\def\bigstrut{\vrule width 0pt depth .4\baselineskip}
+
+\long\def\table#1{%
+ \parskip=0pt
+ \halign{%
+	 \hss{\csc ##}\quad&\vtop{\parindent=0pt\advance\hsize by -1.2cm\strut##}\cr%
+	 #1
+ }%
+}
+\settextsize{10}
+\sekcebefore=16pt plus 4pt minus 4pt
+\sekceafter=5pt plus 2pt
+%\def\urlcol{\rgb{.6 .29 0}}

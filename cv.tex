@@ -1,0 +1,146 @@
+\newif\ifdoublecolumn
+\doublecolumnfalse
+
+\input makra-cv
+
+\newdimen\hei
+\hei=3cm
+\line{%
+ \vbox{\vss\hbox{\fnad Richard Hladík\ }}
+ \hfil
+ \hfil
+ \hfil
+ \vbox{%
+  \vss
+  \g[img/home.pdf: Prague, Czechia]
+  \g[img/phone.pdf: +420 608 176 814]
+  \vskip -.5mm
+  \vss
+ }
+ \hfil
+ \vbox{%
+  \vss
+  \g[img/mail.pdf: rihl@uralyx.cz]
+  \g[img/www.pdf: \url{http://rihl.uralyx.cz}{rihl.uralyx.cz}]
+  \vskip -.5mm
+  \vss
+ }%
+}
+
+\vskip 2mm
+\hrule width \hsize
+
+\vskip 3mm
+
+{\it Currently an undergraduate Computer science student at Charles University,
+Prague. Research interests: data structures, combinatorial optimization and
+flow networks.}
+
+\sekce Education
+
+\table{
+ Sept.~2017--Now & Bc. in General computer science\par{\bf Charles University}, Faculty of Mathematics and Physics, Prague\bigstrut\cr
+ May 2017 & upper secondary education\par {\bf Grammar School and Commercial Academy Mariánské Lázně}\cr
+}
+
+\sekce Achievements
+
+\footnote{}{\hskip -3mm\hbox to 3mm{$^\dagger$\hss}with Václav Volhejn and Filip Bialas}
+
+\table{
+	2019 & ACM-ICPC Central European Regional Contest\global\footnote{$^\dagger$}{with V.~Volhejn and F.~Bialas} – \url{https://icpc.baylor.edu/regionals/finder/central-europe-2019/standings}{5th place}, advancing to World Finals 2020\cr
+%	2018 & ACM-ICPC Central European Regional Contest$^\dagger$ – \url{https://contest.felk.cvut.cz/18cerc/rank.html}{9th place}\cr
+	2018 & ACM-ICPC World Finals$^\dagger$ – \url{https://icpc.baylor.edu/regionals/finder/world-finals-2018/standings}{56th place}\cr
+	2017 & International Olympiad in Informatics – \url{http://stats.ioinformatics.org/results/2017}{Silver medal (69th place)}\cr
+%	2017 & ACM-ICPC Central European Regional Contest$^\dagger$ – \url{http://cerc.hsin.hr/index.php?page=results}{6th place}\cr
+%	2016 & Czech Olympiad in Informatics – \url{http://mo.mff.cuni.cz/p/65/vysledky-3.html}{3rd place}\cr
+	2016 & ACM-ICPC Central European Regional Contest$^\dagger$ – \url{https://icpc.baylor.edu/regionals/finder/central-europe-2016/standings}{12th place} (unofficial participation)\cr
+	2016 & International Olympiad in Informatics – \url{http://stats.ioinformatics.org/results/2016}{Bronze medal (154th place)}\cr
+}
+
+\sekce Research Experience
+
+\table{
+June 2018–Dec.~2020 &
+\advance\hsize by -2.94cm
+Part-time job in the \url{http://industrialinformatics.fel.cvut.cz}{Industrial Informatics Research Center}, Czech Technical University, Prague.
+%
+Research in scheduling and optimisation.
+\bigstrut
+%Proved NP-hardness of a certain
+%periodic scheduling problem, developed a heuristic which solves even
+%moderate-sized instances efficiently. Primary author of the resulting \url{https://link.springer.com/chapter/10.1007/978-3-030-64843-5_8}{conference paper}.
+\cr
+Mar.~2020–Now &
+\advance\hsize by -2.94cm
+\url{https://www.mff.cuni.cz/en/iuuk}{Computer Science Institute}, Charles
+University, Prague. Research in network flows and convex optimisation. A part
+of a Student Faculty Grant and my bachelor's thesis.
+\cr
+}
+
+\sekce Publications
+
+\unskip
+\nocite{hladik2020complexity}%
+\bibliography{bibliography}%
+\bibliographystyle{plain}%
+
+\sekce Teaching
+
+\itemindent=.5\itemindent
+\itemnarrow=0pt
+\list{-}
+	\: Programming II practicals for advanced students (\url{https://mj.ucw.cz/vyuka/1920/p2x/}{Spring~2020}, \url{https://mj.ucw.cz/vyuka/1819/p2x/}{Spring~2019}), co-taught with Martin Mareš
+	\: Programming I practicals for advanced students (\url{https://mj.ucw.cz/vyuka/1920/p1x/}{Autumn~2019}), co-taught with Martin Mareš
+\endlist
+
+\sekce Other
+
+{\bf Languages}: Czech (native), English (C1), German (B1), French (basics)
+
+\medskip
+In my free time, I help to organise correspondence seminars, competitions and
+educational camps for talented high school students:
+\medskip
+
+\def\hs{\advance\hsize by -1.05cm}
+\table{
+2018--Now &\hs {\sl \url{https://mo.mff.cuni.cz/p/}{Czech Olympiad in Informatics}}\bigstrut\cr
+%
+2017--2020 &\hs {\sl \url{https://ksp.mff.cuni.cz}{KSP}}\bigstrut\cr
+%
+2018--2019 &\hs {\sl Czech IOI Selection Camp} -- a series of on-site competitions for Czech high school students that selects the Czech team for the International Olympiad in Informatics.\bigstrut\cr
+%
+2018--2019 &\hs {\sl Czech-Polish-Slovak Preparation Camp} -- a series of on-site competitions for high school students advancing to the International Olympiad in Informatics.\bigstrut\cr
+%
+2017--2019 &\hs {\sl \url{https://kasiopea.matfyz.cz}{Kasiopea}}\bigstrut\cr
+}
+
+%\sekce Projects
+%
+%\proj{\url{http://uralyx.cz/prog/outotune}{Outotune}}{real-time harmoniser}{2020}
+%
+%A \url{https://www.youtube.com/watch?v=DnpVAyPjxDA}{harmoniser} plugin with
+%VST3, LV2 and JACK integration written in \Cpp. Lets you sing harmonies in
+%real time using only your voice and a MIDI keyboard. Analyses your voice and
+%synthesizes it at different pitches.
+%
+%\proj{\url{https://github.com/RichardHladik/rambajz}{Rambajz}}{real-time tuner
+%and spectogram}{2019}
+%
+%Graphical real-time tuner and infinitely zoomable spectogram.
+%Written in C, using SDL and JACK, with emphasis on low latency and high
+%tuning precision.
+%
+%% \proj{\url{https://github.com/RichardHladik/haskell-segtree}{haskell-segtree}}{polymorphic lazy segment tree}{2018}
+%% 
+%% Generic implementation of a persistent sparse lazy segment tree, which is able
+%% to work with arbitrary monoids. Written in Haskell.
+%
+%\proj{\url{https://github.com/trinerdi/icpc-notebook}{icpc-notebook}}{collection of algorithms and data structures}{2016–2018}
+%
+%A collection of algorithms and data structures which was used by our team at
+%the ACM ICPC World Finals 2018.
+
+\bye
