@@ -7,10 +7,10 @@
 
 \input makra
 
-\leftmargin=1in
-\rightmargin=1in
-\topmargin=.5in
-\bottommargin=1in
+\leftmargin=.7in
+\rightmargin=.7in
+\topmargin=.4in
+\bottommargin=.4in
 \setuppage
 
 \font\fnad="\bffamily" at 22pt
@@ -23,11 +23,11 @@
 \long\def\table#1{%
  \parskip=0pt
  \halign{%
-	 \hss{\csc ##}\quad&\vtop{\parindent=0pt\advance\hsize by -1.2cm\strut##}\cr%
+	 \hss{\csc ##}\hskip .5em&\vtop{\parindent=0pt\advance\hsize by -1.65cm\advance\hsize by .6in\advance\hsize by .5em\strut##}\cr%
 	 #1
  }%
 }
 \settextsize{10}
-\sekcebefore=16pt plus 4pt minus 4pt
-\sekceafter=5pt plus 2pt
+\sekcebefore=16pt plus 4pt minus 8pt
+\sekceafter=5pt plus 2pt minus 1pt
 %\def\urlcol{\rgb{.6 .29 0}}

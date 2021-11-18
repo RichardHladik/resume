@@ -6,22 +6,22 @@
 \newdimen\hei
 \hei=3cm
 \line{%
- \vbox{\vss\hbox{\fnad Richard Hladík\ }}
+ \vbox{\vss\hbox{\fnad \myname\ }}
  \hfil
  \hfil
  \hfil
  \vbox{%
   \vss
-  \g[img/home.pdf: Zürich, Switzerland]
-  \g[img/phone.pdf: +41 76 229 45 30]
+  \g[img/home.pdf: \myaddress]
+  \g[img/phone.pdf: \myphone]
   \vskip -.5mm
   \vss
  }
  \hfil
  \vbox{%
   \vss
-  \g[img/mail.pdf: work@uralyx.cz]
-  \g[img/www.pdf: \url{http://rihl.uralyx.cz}{rihl.uralyx.cz}]
+  \g[img/mail.pdf: \myemail]
+  \g[img/www.pdf: \url{http://\myweb}{\myweb}]
   \vskip -.5mm
   \vss
  }%
@@ -32,24 +32,34 @@
 
 \vskip 3mm
 
-{\it Currently starting an MSc programme in Computer science at ETH Zürich. Research
-interests: algorithms, data structures, combinatorial optimization and flow
-networks.}
+{\I
+%
+A first-year student of the Computer science MSc programme at
+ETH Zürich, currently exploring ways of maximising my impact.
+%
+I love pushing the boundaries of human knowledge and creating what hasn't been
+created before, especially in a group of similarly enthusiastic people.
+%
+Research interests: algorithms, data structures, combinatorial
+optimization and flow networks.}
 
 \sekce Education
 
 \table{
- Sept.~2021--Now & MSc in Computer science\par{\bf ETH Zürich}\bigstrut\cr
- Sept.~2017--June~2021 & Bc. in Computer science\par{\bf Charles University}, Faculty of Mathematics and Physics, Prague\bigstrut\cr
+Sept.~2021--Now & MSc in Computer science\hfil{\I (expected graduation: June 2023)}\par{\bf ETH Zürich}\bigstrut\cr
+
+ Sept.~2017--June~2021 & Bc. in Computer science\par{\bf Charles University}, Faculty of Mathematics and Physics, Prague\par
+ {\I perfect grades (GPA of 1.00) throughout the studies and 224 ECTS credits}\bigstrut\cr
  May 2017 & upper secondary education\par {\bf Grammar School and Commercial Academy Mariánské Lázně}\cr
 }
 
-\sekce Achievements
+\sekce Achievements \& Awards
 
-\footnote{}{\hskip -3mm\hbox to 3mm{$^\dagger$\hss}with Václav Volhejn and Filip Bialas}
+\footnote{}{\hskip -3mm\hbox to 3mm{$^\dagger$\hss}a team competition; with my friends Václav Volhejn and Filip Bialas}
 
 \table{
-	2019 & ACM-ICPC Central European Regional Contest\global\footnote{$^\dagger$}{with V.~Volhejn and F.~Bialas} – \url{https://icpc.baylor.edu/regionals/finder/central-europe-2019/standings}{5th place}, advancing to World Finals 2020\cr
+	2021 & ETH-D scholarship for excellent Master's students\cr
+%	2019 & ACM-ICPC Central European Regional Contest\global\footnote{$^\dagger$}{with V.~Volhejn and F.~Bialas} – \url{https://icpc.baylor.edu/regionals/finder/central-europe-2019/standings}{5th place}, advancing to World Finals 2020\cr
 %	2018 & ACM-ICPC Central European Regional Contest$^\dagger$ – \url{https://contest.felk.cvut.cz/18cerc/rank.html}{9th place}\cr
 	2018 & ACM-ICPC World Finals$^\dagger$ – \url{https://icpc.global/regionals/finder/world-finals-2018/standings}{56th place}\cr
 	2017 & International Olympiad in Informatics – \url{http://stats.ioinformatics.org/results/2017}{Silver medal (69th place)}\cr
@@ -61,22 +71,28 @@ networks.}
 
 \sekce Research Experience
 
+\def\hs{\advance\hsize by -4.05cm}
 \table{
-June 2018–Dec.~2020 &
-\advance\hsize by -2.94cm
-Part-time job in the \url{http://industrialinformatics.fel.cvut.cz}{Industrial Informatics Research Center}, Czech Technical University, Prague.
-%
-Research in scheduling and optimisation.
-\bigstrut
-%Proved NP-hardness of a certain
-%periodic scheduling problem, developed a heuristic which solves even
-%moderate-sized instances efficiently. Primary author of the resulting \url{https://link.springer.com/chapter/10.1007/978-3-030-64843-5_8}{conference paper}.
-\cr
 Mar.~2020–Jun.~2021 &
-\advance\hsize by -2.94cm
-\url{https://www.mff.cuni.cz/en/iuuk}{Computer Science Institute}, Charles
-University, Prague. Research in network flows and convex optimisation. A part
-of a Student Faculty Grant and my bachelor's thesis.
+\hs
+{\I \url{https://www.mff.cuni.cz/en/iuuk}{Computer Science Institute}, Charles
+University, Prague.} Research in network flows and convex optimisation, supervised by
+\url{http://research.koutecky.name/}{Martin Koutecký}. A part
+of a Student Faculty Grant and a superset of my bachelor's thesis.
+%
+We have proposed two new combinatorial algorithms for the multicommodity flow (MCF) problem, and tied their time complexity to combinatorial properties of the MCF polyhedron.
+%
+Journal article(s) in progress.
+\bigstrut
+\cr
+June 2018–Dec.~2020 &
+\hs
+{\I \url{http://industrialinformatics.fel.cvut.cz}{Industrial Informatics Research Center}, Czech Technical University, Prague.}
+%
+Part-ti\-me research in scheduling and optimisation, supervised by Anna Minaeva.
+%
+Proved NP-hardness of a certain periodic scheduling problem, developed and tested several new heuristics for it, proposed a new method for generating problem instances. Primary author of the resulting conference paper.
+\bigstrut
 \cr
 }
 
@@ -87,6 +103,25 @@ of a Student Faculty Grant and my bachelor's thesis.
 \bibliography{bibliography}%
 \bibliographystyle{plain}%
 
+\sekce Projects
+
+\nproj{\url{http://uralyx.cz/prog/outotune}{Outotune}}{2020–Now}
+%
+a \url{https://www.youtube.com/watch?v=DnpVAyPjxDA}{harmoniser} with
+VST3, LV2 and JACK support written in \Cpp. Lets you sing chords in
+real time using a MIDI keyboard and your voice, by analysing it and
+resynthesising it at different pitches.
+
+\sekce Programming languages \& technologies
+ 
+{\let\bf\relax
+Professionally worked with {\bf \Cpp} and {\bf Python}, also fluent in {\bf C},
+{\bf sh} and \TeX. Worked with \Cis{} and Haskell at some point. Experience with
+{\bf Git}, {\bf NumPy}, {\bf PyTorch}, {\bf TensorFlow}, {\bf Pandas}, among
+others. Long-time Linux user with server administration experience.
+}
+
+\iffalse
 \sekce Teaching
 
 \itemindent=.5\itemindent
@@ -96,26 +131,33 @@ of a Student Faculty Grant and my bachelor's thesis.
 	\: Programming I practicals for advanced students (\url{https://mj.ucw.cz/vyuka/1920/p1x/}{Autumn~2019}), co-taught with Martin Mareš
 \endlist
 
+\fi
+
 \sekce Other
 
 {\bf Languages}: Czech (native), English (C2 -- CAE Grade A), German (B2), French (basics)
 
+{\bf Authorisations}: I'm a holder of an EU passport and an EU driver's licence of class B.
+
 \medskip
-In my free time, I help to organise correspondence seminars, competitions and
-educational camps for talented high school students:
+In my free time, I help to organise seminars, competitions and
+educational camps for talented highschoolers:
 \medskip
 
-\def\hs{\advance\hsize by -1.05cm}
+\def\hs{\advance\hsize by -2.1cm}
 \table{
-2018--Now &\hs {\sl \url{https://mo.mff.cuni.cz/p/}{Czech Olympiad in Informatics}}\bigstrut\cr
+2018--Now &\hs {\sl \url{https://mo.mff.cuni.cz/p/}{Czech Olympiad in Informatics}}, {\sl Czech IOI Selection Camp} -- a series of off- and on-site competitions for Czech highschoolers that selects the Czech team for the International Olympiad in Informatics. \bigstrut\cr
 %
-2018--Now &\hs {\sl Czech IOI Selection Camp} -- a series of on-site competitions for Czech high school students that selects the Czech team for the International Olympiad in Informatics.\bigstrut\cr
-%
-2017--2020 &\hs {\sl \url{https://ksp.mff.cuni.cz}{KSP}}\bigstrut\cr
+2017--2020 &\hs {\sl \url{https://ksp.mff.cuni.cz}{KSP}} -- an algorithmisation correspondence seminar for Czech highschoolers; had one
+of leading roles in 2018–2019, managing 10–20 people and having responsibility for the seminar's main
+category%
+.
+%– from inventing problems and writing problem statements to testing them and grading contestants' submissions.
+\bigstrut\cr
 %
 2018--2019 &\hs {\sl Czech-Polish-Slovak Preparation Camp} -- a series of on-site competitions for high school students advancing to the International Olympiad in Informatics.\bigstrut\cr
 %
-2017--2019 &\hs {\sl \url{https://kasiopea.matfyz.cz}{Kasiopea}}\bigstrut\cr
+%2017--2019 &\hs {\sl \url{https://kasiopea.matfyz.cz}{Kasiopea}}\bigstrut\cr
 }
 
 %\sekce Projects
