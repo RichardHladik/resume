@@ -1,7 +1,4 @@
-all: resume.pdf cv.pdf
-
-resume.pdf: resume.tex makra.tex eplain.tex $(wildcard img/*.pdf)
-	yes X | luatex -fmt pdfcsplain resume
+all: cv.pdf
 
 cv.pdf: cv.tex makra-cv.tex makra.tex eplain.tex bibliography.bib $(wildcard img/*.pdf)
 	yes X | luatex -fmt pdfcsplain cv
