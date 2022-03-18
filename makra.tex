@@ -4,6 +4,10 @@
 \ucwmodule{luaofs}
 \ucwmodule{ref}
 
+\itemnarrow=0pt
+\itemindent=0.25in
+\preitemizeskip=0pt plus 2pt minus 1pt	
+\postitemizeskip=5pt plus 2pt minus 1pt	
 \leftmargin=1.2cm
 \rightmargin=1.2cm
 \topmargin=8mm
@@ -65,7 +69,7 @@
 \def\Cis{C\#}
 \def\fancy#1#2#3{{\ifafterheading\else\vskip 7pt plus 2pt minus 2pt\fi\parskip=0pt {\bf #1} {\sl(#3)}~– {\it#2}\par\vskip 0pt minus 2pt}}
 \let\proj\fancy
-\def\nproj#1#2{{\ifafterheading\else\vskip 7pt plus 2pt minus 5pt\fi\parskip=0pt {\bf #1} {\csc(#2)}~–}}
+\def\nproj#1#2{{\ifafterheading\else\vskip 7pt plus 2pt minus 5pt\fi\parskip=0pt {\csc#2}~–~{\bf #1}~–}}
 \def\todo#1{%
  \colorpush\rgb{1 0 0}%
  #1
