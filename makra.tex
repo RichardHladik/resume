@@ -4,72 +4,113 @@
 \ucwmodule{luaofs}
 \ucwmodule{ref}
 
-\itemnarrow=0pt
-\itemindent=0.25in
-\preitemizeskip=0pt plus 2pt minus 1pt	
-\postitemizeskip=5pt plus 2pt minus 1pt	
-\leftmargin=1.2cm
-\rightmargin=1.2cm
-\topmargin=8mm
-\bottommargin=8mm
-\setuppage
-\footline={}
-\ifx\undefined\makingcv
-	\def\rmfamily{Linux Biolinum}
-	\def\itfamily{Linux Biolinum Italic}
-	\def\bffamily{Linux Biolinum Bold}
-	\def\slfamily{Linux Biolinum Italic}
-\fi
+%% Fonts
+\def\rmfamily{CMU Serif}
+\def\itfamily{CMU Serif Italic}
+\def\bffamily{CMU Serif Bold}
+\def\slfamily{CMU Serif}
 \newdimen\fontsize
 \newdimen\smallerfontsize
-\newskip\sekcebefore
-\newskip\sekceafter
-\ifdoublecolumn
-	\fontsize=11pt
-	\smallerfontsize=10pt
-	\font\fsek="\bffamily" at 17pt
-	\parskip=.2\fontsize
-	\sekcebefore=12pt plus 4pt minus 4pt
-\else
-	\fontsize=10pt
-	\smallerfontsize=9pt
-	\font\fsek="\bffamily" at 14pt
-	\sekcebefore=8pt plus 4pt minus 4pt
-	\parskip=.15\fontsize
-\fi
-\sekceafter=0pt plus 2pt
+
+\fontsize=10pt
+\smallerfontsize=9pt
+\font\fsek="\bffamily" at 14pt
+
 \font\rm="\rmfamily" at \fontsize
 \font\it="\itfamily" at \fontsize
 \font\bf="\bffamily" at \fontsize
 \font\sl="\slfamily" at \smallerfontsize
+\font\fnad="\bffamily" at 22pt
+\font\fcontact="\rmfamily" at 10pt
 \rm
+\settextsize{10}
+
+
+
+%% Page, spacing
+\itemnarrow=0pt
+\itemindent=0.25in
+\preitemizeskip=0pt plus 2pt minus 1pt	
+\postitemizeskip=5pt plus 2pt minus 1pt	
+\footline={}
+\parskip=.15\fontsize
+\baselineskip=1.3\fontsize
+\parindent=0pt
+
+\newskip\sekcebefore
+\newskip\sekceafter
+\sekcebefore=16pt plus 4pt minus 8pt
+\sekceafter=5pt plus 2pt minus 1pt
+
+\leftmargin=.7in
+\rightmargin=.7in
+\topmargin=.3in
+\bottommargin=.35in
+\setuppage
+
+
+
+
+%% Misc settings
+\def\urlcol{\rgb{0 .2 .6}}
+%\def\urlcol{\rgb{.6 .29 0}}
+\automatichyphenmode=1
+
+
+
+%% Headings
 \newif\ifafterheading
 \afterheadingfalse
 \let\oldpar\par
 \def\par{\afterheadingfalse\oldpar}
-\baselineskip=1.3\fontsize
-\font\fnad="\bffamily" at 36pt
-\font\fcontact="\rmfamily" at 12pt
-\parindent=0pt
 \def\sekce#1\par{\vskip \sekcebefore{\fsek#1}\par\vskip \sekceafter\afterheadingtrue}
-\def\dvoj#1! #2\par{\line{\hbox to .5\hsize{#1\hfil}\hbox{#2}\hfil}\par}
-\def\f[#1: #2]{{\bf #1:} #2}
-\def\g[#1: #2]{\hbox{\fcontact\vrule height 4.5mm depth 1.5mm width 0pt\hbox to 7mm {\vbox{\vskip 1mm\img{height 5mm}{#1}\vskip -1mm}\hss} #2}}
-\newcount\fcount
-\fcount=0
-\def\urlcol{%
-	\rgb{0 .2 .6}%
+
+
+
+%% Split lines
+\newdimen\splitsizea
+\newdimen\splitsizeb
+\newdimen\splitpad
+\newskip\splitskip
+\splitpad=8pt
+\splitskip=.4\baselineskip
+\def\decora{}
+\def\decorb{}
+
+\long\def\splitcols#1#2{%
+\splitsizea=#1
+\splitsizeb=\hsize
+\advance\splitsizeb by -\splitsizea
+\advance\splitsizeb by -\splitpad
+#2
 }
+
+\long\def\lin#1#2{%
+	\line{%
+		\hsize=\splitsizea
+		\vtop{\decora{\leavevmode#1}}%
+		\hss
+		\hsize=\splitsizeb
+		\vtop{\decorb{\leavevmode#2}}%
+	}%
+	\vskip\splitskip
+}
+
+
+%% Convenience macros
+% macro for heading icon
+\long\def\g[#1: #2]{\hbox{\fcontact\vrule height 2.5mm depth 1.5mm width 0pt\hbox to 5mm {\vbox{\vskip 1mm\img{height 4mm}{#1}\vskip -1mm}\hss} #2}}
+
+% Project, experience
+\def\nproj#1#2{{\ifafterheading\else\vskip 7pt plus 2pt minus 5pt\fi\parskip=0pt {\csc#2}~–~{\bf #1}~–}}
+\def\exp#1#2#3{{\bf #2} – {\csc #1}, {\I #3}}
+
 \def\url#1#2{%
  \colorpush\urlcol%
  \linkurl{#1}{#2}%
  \colorpop
 }
-\def\Cpp{C++}
-\def\Cis{C\#}
-\def\fancy#1#2#3{{\ifafterheading\else\vskip 7pt plus 2pt minus 2pt\fi\parskip=0pt {\bf #1} {\sl(#3)}~– {\it#2}\par\vskip 0pt minus 2pt}}
-\let\proj\fancy
-\def\nproj#1#2{{\ifafterheading\else\vskip 7pt plus 2pt minus 5pt\fi\parskip=0pt {\csc#2}~–~{\bf #1}~–}}
+
 \def\todo#1{%
  \colorpush\rgb{1 0 0}%
  #1
@@ -80,11 +121,17 @@
   \pdfrefximage\pdflastximage
 }}
 
-\ifdoublecolumn
-	\raggedright
-\else
-	\let\doublecolumns\relax
-	\let\endcolumns\relax
-\fi
+\long\def\table#1{%
+ \parskip=0pt
+ \halign{%
+	 \hss{\csc ##}\hskip .5em&\vtop{\parindent=0pt\advance\hsize by -1.65cm\advance\hsize by .6in\advance\hsize by .5em\strut##}\cr%
+	 #1
+ }%
+}
+
+
+%% Symbols
+\def\Cpp{C++}
+\def\Cis{C\#}
 \def\O{{\cal O}}
 \def\log{\mathop{\hbox{log}}}
