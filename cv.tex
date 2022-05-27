@@ -9,7 +9,7 @@
 \newdimen\hei
 \hei=3cm
 \line{%
- \vbox{\vss\hbox{\fnad \myname\ }}
+ \vbox{\vss\hbox{\fnad \myname\ }\vskip 1mm}
  \hfil
  \hfil
  \hfil
@@ -84,20 +84,21 @@ Charles University, Prague.}
 
 \list{o}
 %
-\: Algorithm research in {\bf networks flows} and {\bf convex optimisation}.
+\: Algorithm research in {\bf networks flows} and {\bf convex optimisation}. Basis for my \url{http://rihl.uralyx.cz/bc-thesis.pdf}{bachelor's thesis}.
+\: Closely collaborated with my
+\url{http://research.koutecky.name/}{supervisor}. Regularly proposed and disscussed new
+approaches. Verified our hypotheses and intuitions both theoretically and
+practially (\Cpp, Python).
 \: Proposed two {\bf new combinatorial algorithms} for the multicommodity flow
 (MCF) problem.
 \: {\bf Improved the state of the art} convergence for combinatorial MCF
-algorithms from $\O(\varepsilon^{-2})$ to $\O(\log 1/\varepsilon)$ for
+algorithms from polynomial to logarithmic for
 instances with small inflation rate.
 %
 %One of the algorithms stems from the Frank-Wolfe method, a projection-free convex optimisation method gaining popularity in ML.
 %
 %\: {\bf Journal article(s)} in progress.
 %A part of a Student Faculty Grant and a
-\: Superset of my \url{http://rihl.uralyx.cz/bc-thesis.pdf}{bachelor's thesis};
-supervised by \url{http://research.koutecky.name/}{Martin Koutecký}.
-Includes a {\bf C++ implementation.}%
 \endlist
 
 \exp{June 2018–Dec.~2020}{\bf Student Researcher}{%\url{http://industrialinformatics.fel.cvut.cz}{Industrial Informatics Research Center},
@@ -108,8 +109,8 @@ Czech Technical University, Prague.}
 %
 \list{o}
 \: Optimisation research in {\bf scheduling}.
-\: {\bf Proved NP-hardness} of a novel periodic scheduling problem, {\bf
-developed} (\Cpp) several {\bf heuristics} for it.
+\: {\bf Proved NP-hardness} of a new periodic scheduling problem, proposed, discussed, {\bf
+developed} (\Cpp) and tested several {\bf heuristics} for it. Wrote auxiliary tools (e.g.~instance visualiser) in the process.
 \:
 %The best one solves 98.4\% of non-overconstrained instances under $3$ minutes.
 {\bf Decreased} the approximation error {\bf 10 times} compared to the base implementation.
@@ -123,8 +124,8 @@ developed} (\Cpp) several {\bf heuristics} for it.
 a \Cpp{} \url{https://www.youtube.com/watch?v=DnpVAyPjxDA}{{\bf
 harmoniser}} implementation.
 \list{o}
-\: Lets you {\bf sing harmonies} in real time by {\bf synthesising} the
-chords you play on a keyboard {\bf using your voice.}
+\: Lets you {\bf sing harmonies} in real time by letting you play chords on
+your keyboard and {\bf synthesising} them {\bf using your voice.}
 
 \: Along the way, I {\bf increased the performance} of an
 open-source DSP library {\bf 3 times} by optimising FFT usage and data reuse.
@@ -139,18 +140,18 @@ open-source DSP library {\bf 3 times} by optimising FFT usage and data reuse.
 \: Toy ML projects including image segmentation, PoS tagging, speech recognition, 3D object recognition.
 \endlist
 
+\nproj{\url{https://github.com/kasiopea-org/pisek}{Písek}}{Mar.–May 2020} a Python framework for the preparation of programming competitions.
+%
+\list{o}
+\: {\bf Contributed} to the project during the initial phase (was one of the main contributors). I still occasionally help maintain it.
+\: {\bf Added support} for the contest format used at the International Olympiad in Informatics.
+\endlist
 
 \nproj{{Operating Systems project}}{Sept.~2019–Jan.~2020} a small MIPS OS in C; part of a university course.
 %
 \list{o}
 \: {\bf Wrote an OS} including interrupt management, heap allocator,
 scheduler, VM etc. in a {\bf two-person team.}
-\endlist
-
-\nproj{\url{https://github.com/kasiopea-org/pisek}{Písek}}{Mar.–May 2020} a Python framework for the preparation of programming competitions.
-%
-\list{o}
-\: Was one of the main contributors during the initial phase. I still occasionally help maintain it.
 \endlist
 
 %\nproj{\url{https://github.com/RichardHladik/rambajz}{Rambajz}}{2019}
@@ -170,11 +171,13 @@ scheduler, VM etc. in a {\bf two-person team.}
 %the ACM ICPC World Finals 2018.
 
 
+\vfill\eject
+
 \sekce Skills
  
 {\bf Programming languages:} {\af advanced:} {\B Python}, {\B \Cpp}, {\B C}, {\B sh}; {\af intermediate:} {\B SQL}; {\af basic:} \Cis{}, Haskell.
 
-
+\smallskip
 
 {\bf Technologies:} {\af Git}, {\af NumPy}, {\af PyTorch}, {\af TensorFlow},
 {\af Pandas}, {\af GoogleTest}, {\af GDB}, {\af Make}. Long-time ($> 10$ years) Linux user
@@ -182,13 +185,14 @@ with sysadmin and {\bf systems programming} experience.
 
 \smallskip
 
-{\bf Relevant courses:} Computer Linguistics, Deep Learning, Computer Graphics,
-Data Compression Algorithms, Reliable and Trustworthy AI, Information
-Theory. Currently taking Principles of Distributed Computing.
+I also try to broaden my scope by taking {\bf courses in related areas}. Those
+include: Computer Linguistics, Deep Learning, Computer Graphics, Data
+Compression Algorithms, Reliable and Trustworthy AI, Information Theory.
+Currently I am taking Principles of Distributed Computing.
 
 \smallskip
 
-{\bf Languages}: Czech (native), English (C2 -- CAE Grade A), German (B2), French (basics)
+{\bf Languages}: Czech (native), English (C2 -- CAE Grade A), German (B2–C1), French (basics)
 
 
 \iffalse
@@ -215,8 +219,9 @@ Theory. Currently taking Principles of Distributed Computing.
 I implement, test and write up algorithmic tasks; in the latter, I {\bf reimplemented} and {\bf simplified} a big part of the technical infrastructure.
 %-- a series of off- and on-site competitions for Czech highschoolers that selects the Czech team for the International Olympiad in Informatics. \bigstrut\cr
 }
-\lin{2017--2020}{{\sl \url{https://ksp.mff.cuni.cz}{KSP}} -- an algorithmisation correspondence seminar for Czech highschoolers; {\bf led the main category} in 2018–2019, managing 10–20 people.%
-%– from inventing problems and writing problem statements to testing them and grading contestants' submissions.
+\lin{2017--2020}{{\sl \url{https://ksp.mff.cuni.cz}{KSP}} -- an algorithmisation correspondence seminar for Czech highschoolers; {\bf led the main category} in 2018–2019, managing 10–20 people. %
+%– from inventing problems and writing problem statements to testing them and grading contestants' hand-written solutions.
+Co-organised several {\bf educational camps} with lectures and informatics-related (and -unrelated) activities.
 }
 %
 %2018--2019 &\hs {\sl Czech-Polish-Slovak Preparation Camp} -- a series of on-site competitions for high school students advancing to the International Olympiad in Informatics.\bigstrut\cr
@@ -231,16 +236,17 @@ I implement, test and write up algorithmic tasks; in the latter, I {\bf reimplem
 \def\fn{$^\dagger$}
 \let\fn\relax
 
-\table{
-	2021 & ETH-D scholarship for excellent Master's students (\approx{} 90 out of 2500 Master's students awarded each year)\cr
-%	2019 & ACM-ICPC Central European Regional Contest\fn{} – \url{https://icpc.baylor.edu/regionals/finder/central-europe-2019/standings}{5th place}, advancing to World Finals 2020\cr
-%	2018 & ACM-ICPC Central European Regional Contest\fn{} – \url{https://contest.felk.cvut.cz/18cerc/rank.html}{9th place}\cr
-	2018 & ACM-ICPC World Finals\fn{} – \url{https://icpc.global/regionals/finder/world-finals-2018/standings}{56th place} out of 140 teams\cr
-	2017 & International Olympiad in Informatics (IOI) – \url{http://stats.ioinformatics.org/results/2017}{Silver medal, 69th place} out of 304 participants\cr
-%	2017 & ACM-ICPC Central European Regional Contest\fn{} – \url{http://cerc.hsin.hr/index.php?page=results}{6th place}\cr
-%	2016 & Czech Olympiad in Informatics – \url{http://mo.mff.cuni.cz/p/65/vysledky-3.html}{3rd place}\cr
-	2016 & ACM-ICPC Central European Regional Contest\fn{} – \url{https://icpc.global/regionals/finder/central-europe-2016/standings}{12th place} (unofficial high school participation)\cr
-	2016 & International Olympiad in Informatics (IOI) – \url{http://stats.ioinformatics.org/results/2016}{Bronze medal, 154th place} out of 308 participants\cr
+\splitcols{8mm}{
+	\splitskip=.1\baselineskip
+	\lin{2021}{ETH-D scholarship for excellent Master's students (\approx{} 90 out of 2500 students awarded each year)}
+	\lin{2019}{ACM-ICPC Central European Regional Contest\fn{} – \url{https://icpc.baylor.edu/regionals/finder/central-europe-2019/standings}{5th place}, advanced to World Finals 2020}
+%	\lin{2018}{ACM-ICPC Central European Regional Contest\fn{} – \url{https://contest.felk.cvut.cz/18cerc/rank.html}{9th place}}
+	\lin{2018}{ACM-ICPC World Finals\fn{} – \url{https://icpc.global/regionals/finder/world-finals-2018/standings}{56th place} out of 140 teams}
+	\lin{2017}{International Olympiad in Informatics (IOI) – \url{http://stats.ioinformatics.org/results/2017}{Silver medal, 69th place} out of 304 participants}
+%	\lin{2017}{ACM-ICPC Central European Regional Contest\fn{} – \url{http://cerc.hsin.hr/index.php?page=results}{6th place}}
+%	\lin{2016}{Czech Olympiad in Informatics – \url{http://mo.mff.cuni.cz/p/65/vysledky-3.html}{3rd place}}
+	\lin{2016}{ACM-ICPC Central European Regional Contest\fn{} – \url{https://icpc.global/regionals/finder/central-europe-2016/standings}{12th place} (unofficial high school participation)}
+	\lin{2016}{International Olympiad in Informatics (IOI) – \url{http://stats.ioinformatics.org/results/2016}{Bronze medal, 154th place} out of 308 participants}
 }
 
 
