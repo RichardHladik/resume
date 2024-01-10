@@ -43,16 +43,12 @@
 
 {\I
 %
-A final-semester student of the Computer science MSc programme at ETH Zürich.
-Theoretical computer scientist at heart, but currently also trying to gain
-experience in more practical fields, such as ML, software engineering,
-bioinformatics, or operation research.
+A final-semester student of the Computer Science MSc programme at ETH Zürich. Currently writing my Master's thesis at BARC, University of Copenhagen. I'm passionate about graph theory, algorithms, and data structures, but I've been exploring other areas as well (differential privacy most recently).
 %
-Open source enthusiast.
+%Open source enthusiast.
 %
-I love pushing the boundaries of human knowledge and creating new and
-meaningful things, especially in a group of similarly passionate people.
-}
+I love tackling interesting problems and pushing the boundaries of human
+knowledge, especially in a group of similarly passionate people. }
 }%
 \hss
 \ifphoto
@@ -71,81 +67,71 @@ meaningful things, especially in a group of similarly passionate people.
 
 \splitcols{3.8cm}{
 \def\decora#1{\csc #1}
-\lin{Sept.~2021--Now}{MSc in Computer science, {\bf ETH Zürich}\hfill{\I (expected graduation: September 2024)}
+\lin{Sept.~2021--Now}{MSc in Computer Science, {\bf ETH Zürich}\hfill{\I (expected graduation: July 2024)}
 
-{\I GPA of 5.58 (out of 6.00) after spring semester 2023 (not yet finalised)}}
+{\I GPA of 5.59 (out of 6.00) after spring semester 2023}}
 
-\lin{Sept.~2017--June~2021}{Bc.~in Computer science, {\bf Charles University}, \iffalse Faculty of Mathematics and Physics,\fi Prague
+\lin{Sept.~2017--June~2021}{Bc.~in Computer Science, {\bf Charles University}, \iffalse Faculty of Mathematics and Physics,\fi Prague
 
- {\I perfect grades (GPA of 1.00) throughout the studies and 224 ECTS credits}}
+ {\I perfect GPA (1.00) throughout the studies and 224 ECTS credits (out of 180 required)}}
 % May 2017 & Matura, Grammar School and Commercial Academy Mariánské Lázně, Czechia\cr
 }
 
 
-\sekce Experience
+\sekce Work \& Research Experience
+
+\exp{Nov.~2023–Now}{Student Researcher}{\url{https://barc.ku.dk/}{BARC}, University of Copenhagen}, supervisor: Rasmus Pagh
+\list{o}
+\: Research on {\bf differential privacy} in graph settings. At the moment exploring tighter upper and lower bounds for differentially private minimum spanning trees.
+\endlist
+
+\exp{Apr.--Oct.~2023}{Research Project}{\I ETH Zürich}, supervisor: Bernhard Haeupler
+
+\list{o}
+\: We {\bf designed a novel heap} with a certain beyond-worst-case property and {\bf proved that Dijkstra's algorithm} using any heap with this property {\bf is universally optimal} (as fast as possible on every graph).
+\endlist
 
 \exp{Sep.~2022–Feb.~2023}{Software Engineering Intern}{\url{https://www.daedalean.ai/}{Daedalean}, Zürich}
 
 \list{o}
 %
-\: Developed a novel tool used to {\bf scale up model evaluation} without human annotation. (Rust)
-\: {\bf Designed} and {\bf implemented an algorithm} for matching model detections with air traffic data based on their movement patterns.
-\: {\bf Devised} and {\bf analysed a heuristic} for deciding camera visibility of external air traffic.
+%\: Developed a novel tool used to {\bf scale up model evaluation} without human annotation (Rust).
+\: {\bf Designed} and {\bf implemented algorithms} for matching model detections with air traffic data based on their movement patterns, thus {\bf scaling up} model evaluation without human annotation.
+%\: {\bf Devised} and {\bf analysed a heuristic} for deciding camera visibility of external air traffic.
 %
 \endlist
 
 \exp{Mar.~2020–Jun.~2021}{Student Researcher}{%
 %\url{https://www.mff.cuni.cz/en/iuuk}{Computer Science Institute},
-Charles University, Prague.}
+Charles University, Prague}, supervisor: Martin Koutecký
 
 \list{o}
 %
-\: Algorithm research in {\bf network flows} and {\bf convex optimisation}. Basis for my \url{http://rihl.uralyx.cz/bc-thesis.pdf}{bachelor's thesis}.
-\: {\bf Constructed} new {\bf algorithms} and investigated properties of their underlying combinatorial structure, in close collaboration with my
-\url{http://research.koutecky.name/}{supervisor}. Also verified our intuitions practically (\Cpp, Python).
-%\: Proposed two {\bf new combinatorial algorithms} for the multicommodity flow
-%(MCF) problem.
-\: {\bf Improved the state of the art} convergence of combinatorial
-algorithms for the multicommodity flow problem {\bf exponentially}
-% from polynomial to logarithmic
-on instances with small inflation rate.
-%
-%One of the algorithms stems from the Frank-Wolfe method, a projection-free convex optimisation method gaining popularity in ML.
-%
-%\: {\bf Journal article(s)} in progress.
-%A part of a Student Faculty Grant and a
+%\: Algorithm research in {\bf network flows} and {\bf convex optimisation}. Basis for my \url{http://rihl.uralyx.cz/bc-thesis.pdf}{bachelor's thesis}.
+\: {\bf Designed} new combinatorial {\bf algorithms} for the multicommodity flow problem (MCF), polynomial with respect to a certain parametrization.
+\: {\bf Showed exponential lower bounds} on the circuits of the MCF linear program and on its fractionality.
 \endlist
 
 \exp{June 2018–Dec.~2020}{\bf Student Researcher}{%\url{http://industrialinformatics.fel.cvut.cz}{Industrial Informatics Research Center},
-Czech Technical University, Prague.}
+Czech Technical University, Prague}, supervisor: Zdeněk Hanzálek
 %
 %Part-time research,
 %supervised by Anna Minaeva.
 %
 \list{o}
-\: Optimisation research in {\bf scheduling}.
-\: {\bf Proved NP-hardness} of a new periodic scheduling problem, proposed, discussed, {\bf
-developed} and tested several {\bf heuristics} for it. Wrote auxiliary tools (e.g.~instance visualiser) in the process (\Cpp, Python).
-\:
-%The best one solves 98.4\% of non-overconstrained instances under $3$ minutes.
-{\bf Decreased} the approximation error {\bf 10$\times$} compared to the base implementation.
+\: {\bf Proved NP-hardness} of a new periodic scheduling problem and {\bf
+developed} several {\bf heuristics} for it.
+%\: {\bf Decreased} the approximation error {\bf 10$\times$} compared to the base implementation.
 
 \endlist
 
-\sekce Projects
+%\nproj{Lab Project}{Mar.~2022–July 2022}, {\I ETH Zürich} – an optimised implementation of belief propagation.
+%\list{o}
+%\: A four-person team project focused on {\bf writing fast C code}.
+%\: Achieved {\bf 100–500}$\times$ {\bf speedup:} 80–250$\times$ due to optimisations in the underlying algorithm and 1.3–2$\times$ due to vectorisation, better cache locality, memory compaction etc.
+%\endlist
 
-\nproj{Research Project}{Apr.~2023–Now}, {\I ETH Zürich} – universally optimal Dijkstra via beyond-worst-case heaps.
-
-\list{o}
-\: We {\bf improved Fibonacci heaps} to achieve beyond-worst-case guarantees and {\bf proposed a modification of Dijkstra's algorithm} using this heap that is {\bf provably universally optimal}.
-\endlist
-
-\nproj{Lab Project}{Mar.~2022–July 2022}, {\I ETH Zürich} – an optimised implementation of belief propagation.
-\list{o}
-\: A four-person team project focused on {\bf writing fast C code}.
-\: Achieved {\bf 100–500}$\times$ {\bf speedup:} 80–250$\times$ due to optimisations in the underlying algorithm and 1.3–2$\times$ due to vectorisation, better cache locality, memory compaction etc.
-\endlist
-
+\iffalse
 \nproj{\url{http://uralyx.cz/prog/outotune}{Outotune}}{Feb.~2020–Now} –
 %
 a real-time \Cpp{} \url{https://www.youtube.com/watch?v=DnpVAyPjxDA}{{\bf
@@ -156,6 +142,7 @@ harmoniser}} implementation.
 \: {\bf Sped up} an open-source DSP library {\bf 3 times} by optimising FFT usage and data reuse.
 
 \endlist
+\fi
 
 %\nproj{{Machine Learning projects}}{Mar.~2018–Dec.~2022}, {\I Charles University \& ETH Zürich}
 %%
@@ -196,6 +183,7 @@ harmoniser}} implementation.
 %the ACM ICPC World Finals 2018.
 
 
+ \iffalse
 \sekce Skills
  
 {\bf Programming languages:} {\af advanced:} {\B Python}, {\B \Cpp}, {\B C}, {\B sh}; {\af intermediate:} {\B Rust}; {\af basic:} \Cis{}, Haskell.
@@ -215,8 +203,10 @@ Principles of Distributed Computing.
 
 \smallskip
 
+
 {\bf Languages}: Czech (native), English (C2 -- CAE Grade A), German (B2–C1), French (basics)
 
+\fi
 
 \iffalse
 \sekce Teaching
@@ -230,7 +220,7 @@ Principles of Distributed Computing.
 
 \fi
 
-\sekce Extracurricular Activities
+\sekce Teaching \& Extracurricular Activities
 
 %{\bf Authorisations}: I'm a holder of an EU passport and an EU driver's licence of class B.
 
@@ -238,15 +228,16 @@ Principles of Distributed Computing.
 %In my free time, I help to organise seminars, competitions and educational camps for talented highschoolers:
 
 \splitcols{1.75cm}{
-\lin{2018--2022}{{\sl \url{https://mo.mff.cuni.cz/p/}{Czech Olympiad in Informatics}}, {\sl Czech IOI Selection Camp} –
-I implemented, tested and wrote up algorithmic tasks; in the latter, I {\bf rewrote} and {\bf simplified} a big part of the technical infrastructure.
-%-- a series of off- and on-site competitions for Czech highschoolers that selects the Czech team for the International Olympiad in Informatics. \bigstrut\cr
+\lin{2018--2022}{{\sl \url{https://mo.mff.cuni.cz/p/}{Czech Olympiad in Informatics}} \& {\sl Czech IOI Selection Camp} –
+I prepared problems, graded solutions and generally helped with organization.
 }
-\lin{2017--2020}{{\sl \url{https://ksp.mff.cuni.cz}{KSP}} -- an algorithmisation correspondence seminar for Czech highschoolers; {\bf led the main category} in 2018–2019, managing 10–20 people. %
-%– from inventing problems and writing problem statements to testing them and grading contestants' hand-written solutions.
-Co-organised several {\bf educational camps} with lectures and informatics-related (and -unrelated) activities.
+\lin{2017--2023}{{\sl \url{https://ksp.mff.cuni.cz}{KSP}} -- an algorithmic seminar for Czech highschoolers; {\bf main organizer of the main category} in 2018–2019, managing 10–20 organizers. Co-organised educational camps and {\bf gave lectures}.
+%with informatics-related (and -unrelated) activities; I {\bf gave lectures} there.
+%I also proposed algorithmic problems and did almost everything described in the previous paragraph.
 }
-\lin{2019--2020}{{\bf Programming I/II} for advanced students, {\I Charles University} (\url{https://mj.ucw.cz/vyuka/1819/p2x/}{Spring} \& \url{https://mj.ucw.cz/vyuka/1920/p1x/}{Fall} 2019, \url{https://mj.ucw.cz/vyuka/1920/p2x/}{Spring~2020}); co-taught the exercises with Martin Mareš. Set, discussed and solved algorithmic questions during class and prepared \Cpp{} programming tasks for the students to solve.}
+\lin{2019--2020}{TA of Programming for advanced students; {\I Charles University} (\url{https://mj.ucw.cz/vyuka/1819/p2x/}{Spring} \& \url{https://mj.ucw.cz/vyuka/1920/p1x/}{Fall} 2019, \url{https://mj.ucw.cz/vyuka/1920/p2x/}{Spring~2020}).}
+%Set, discussed and solved algorithmic questions during class and
+%I also prepared \Cpp{} programming tasks for the students to solve.}
 %
 %2018--2019 &\hs {\sl Czech-Polish-Slovak Preparation Camp} -- a series of on-site competitions for high school students advancing to the International Olympiad in Informatics.\bigstrut\cr
 %
@@ -263,13 +254,10 @@ Co-organised several {\bf educational camps} with lectures and informatics-relat
 \splitcols{8mm}{
 	\splitskip=.1\baselineskip
 	\lin{2021}{{\bf ETH-D scholarship} for excellent Master's students (\approx{} 90 out of 2500 students awarded each year)}
-	\lin{2019}{ACM-ICPC Central European Regional Contest\fn{} – \url{https://icpc.global/regionals/finder/central-europe-2019/standings}{5th place}, advanced to World Finals 2020}
-%	\lin{2018}{ACM-ICPC Central European Regional Contest\fn{} – \url{https://contest.felk.cvut.cz/18cerc/rank.html}{9th place}}
+	\lin{2021}{ACM-ICPC World Finals 2020 – advanced, but could not participate due to COVID}
 	\lin{2018}{{\bf ACM-ICPC World Finals}\fn{} – \url{https://icpc.global/regionals/finder/world-finals-2018/standings}{56th place} out of 140 teams}
 	\lin{2017}{International Olympiad in Informatics ({\bf IOI}) – \url{http://stats.ioinformatics.org/results/2017}{{\bf Silver medal}, 69th place} out of 304 participants}
-%	\lin{2017}{ACM-ICPC Central European Regional Contest\fn{} – \url{http://cerc.hsin.hr/index.php?page=results}{6th place}}
-%	\lin{2016}{Czech Olympiad in Informatics – \url{http://mo.mff.cuni.cz/p/65/vysledky-3.html}{3rd place}}
-	\lin{2016}{ACM-ICPC Central European Regional Contest\fn{} – \url{https://icpc.global/regionals/finder/central-europe-2016/standings}{12th place} (unofficial high school participation)}
+%	\lin{2016}{ACM-ICPC Central European Regional Contest\fn{} – \url{https://icpc.global/regionals/finder/central-europe-2016/standings}{12th place} (unofficial high school participation)}
 	\lin{2016}{International Olympiad in Informatics (IOI) – \url{http://stats.ioinformatics.org/results/2016}{Bronze medal, 154th place} out of 308 participants}
 }
 
